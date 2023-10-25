@@ -30,7 +30,7 @@ const String url4 = "https://images.pexels.com/photos/5583091/pexels-photo-55830
 final List<TabItem> tabItems = [
   TabItem(
     title: const Text("QR Code", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: MyWidget(
+    tab: TabWidget(
       url: url1,
       child: "QR Code",
       key: GlobalKey(),
@@ -44,7 +44,7 @@ final List<TabItem> tabItems = [
   ),
   TabItem(
     title: const Text("Thunder", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: MyWidget(
+    tab: TabWidget(
       url: url2,
       child: "Thunder",
       key: GlobalKey(),
@@ -57,13 +57,13 @@ final List<TabItem> tabItems = [
   ),
   TabItem(
     title: const Text("Sailing", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: MyWidget(url: url3, child: "Sailing", key: GlobalKey(), color: Colors.blue, lead: const Icon(Icons.sailing_rounded, size: 60)),
+    tab: TabWidget(url: url3, child: "Sailing", key: GlobalKey(), color: Colors.blue, lead: const Icon(Icons.sailing_rounded, size: 60)),
     selectedLeadingIcon: const Icon(Icons.sailing_rounded),
     onTap: () {},
   ),
   TabItem(
     title: const Text("Settings", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: MyWidget(url: url4, child: "Settings", key: GlobalKey(), color: Colors.red, lead: const Icon(Icons.handyman_rounded, size: 60)),
+    tab: TabWidget(url: url4, child: "Settings", key: GlobalKey(), color: Colors.red, lead: const Icon(Icons.handyman_rounded, size: 60)),
     selectedLeadingIcon: const Icon(Icons.handyman_rounded),
     onTap: () {},
   ),
@@ -84,12 +84,12 @@ List<TabItem> subItems = [
   TabItem(title: const Text('Nested Option 2'), onTap: () {}),
 ];
 
-class MyWidget extends StatelessWidget {
+class TabWidget extends StatelessWidget {
   final String child;
   final Widget lead;
   final Color color;
   final String url;
-  const MyWidget({
+  const TabWidget({
     super.key,
     required this.child,
     required this.color,

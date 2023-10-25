@@ -1,7 +1,7 @@
 name: landing_page
-description: A new Flutter package project.
+description: Create stunning and responsive Flutter landing pages with the versatile LandingPage widget.
 version: 0.0.1
-homepage:
+homepage: https://github.com/ShubhamLolge/landing_page
 
 environment:
   sdk: '>=3.1.4 <4.0.0'
