@@ -6,22 +6,24 @@ class SectionLable extends StatelessWidget {
   final double? largeScreenFontSize;
   final Color? color;
   const SectionLable({
-    Key? key,
+    super.key,
     required this.title,
     this.largeScreenFontSize,
     this.color,
     this.smallScreenFontSize,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    String platform = PlatformCheck().platformCheck(context: context);
+
     return Text(
       title,
-      textAlign: (PlatformType.isMobile(context)) ? TextAlign.center : TextAlign.start,
+      textAlign: platform == "Android" || platform == "iOS" || platform == "Web Mobile" ? TextAlign.center : TextAlign.start,
       style: TextStyle(
         color: color ?? AppColors.darkBlack,
         fontWeight: FontWeight.w800,
-        fontSize: (PlatformType.isMobile(context)) ? (smallScreenFontSize ?? 24) : (largeScreenFontSize ?? 52),
+        fontSize: platform == "Android" || platform == "iOS" || platform == "Web Mobile" ? (smallScreenFontSize ?? 24) : (largeScreenFontSize ?? 52),
       ),
     );
   }

@@ -19,14 +19,14 @@ class Header extends StatelessWidget {
   /// when true will show trailing icon for the children
   final bool showTrailingIcon;
   const Header({
-    Key? key,
+    super.key,
     required this.children,
     this.leading,
     this.trailing,
     this.showLeadingIcon = true,
     this.showTrailingIcon = true,
     this.alignment = MainAxisAlignment.center,
-  }) : super(key: key);
+  });
 
   List<Widget> getNavItems({
     required BuildContext context,

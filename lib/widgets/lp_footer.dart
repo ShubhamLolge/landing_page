@@ -40,6 +40,7 @@ class _FooterState extends State<Footer> {
 
   @override
   Widget build(BuildContext context) {
+    String platform = PlatformCheck().platformCheck(context: context);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       color: AppColors.darkBlack,
@@ -69,8 +70,14 @@ class _FooterState extends State<Footer> {
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: (PlatformType.isMobile(context)) ? 50 : 40,
-              runSpacing: (PlatformType.isMobile(context)) ? 35 : 40,
+              spacing:
+                  platform == 'MacOS' || platform == 'Windows' || platform == 'Linux' || platform == 'Fuchsia' || platform == 'Web Desktop' || platform == 'Web Tablet'
+                      ? 40
+                      : 50,
+              runSpacing:
+                  platform == 'MacOS' || platform == 'Windows' || platform == 'Linux' || platform == 'Fuchsia' || platform == 'Web Desktop' || platform == 'Web Tablet'
+                      ? 40
+                      : 35,
               children: getTabTitle(),
             ),
           ),

@@ -80,7 +80,7 @@ class LandingPage extends StatefulWidget {
   final Widget? fabIcon;
 
   const LandingPage({
-    Key? key,
+    super.key,
     required this.children,
     this.footer,
     this.header,
@@ -95,7 +95,7 @@ class LandingPage extends StatefulWidget {
     this.fAB,
     this.showLeadingIconOnHeader = false,
     this.showTrailingIconOnHeader = false,
-  }) : super(key: key);
+  });
 
   @override
   State<LandingPage> createState() => _LandingPageState();

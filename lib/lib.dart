@@ -1,5 +1,4 @@
 export './widgets/section_lable.dart';
-export './widgets/platform_type.dart';
 export './widgets/lp_header.dart';
 export './widgets/lp_drawer.dart';
 export './widgets/lp_footer.dart';
