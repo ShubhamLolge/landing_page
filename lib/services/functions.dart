@@ -4,7 +4,8 @@ import 'package:landing_page/lib.dart';
 Widget visibilityToggle(Function? onToggle, bool isHidden) {
   return InkWell(
     onTap: onToggle != null ? () => onToggle() : null,
-    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off, color: AppColors.primary),
+    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off,
+        color: AppColors.primary),
   );
 }
 
@@ -28,7 +29,8 @@ disableFAB({
   required AnimationController animationController,
 }) {
   scrollController.addListener(() {
-    if (scrollController.position.pixels == scrollController.position.minScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.minScrollExtent) {
       animationController.reverse();
     }
   });
@@ -57,7 +59,6 @@ scrollToSection(BuildContext context) {
 /// Get String from Text('') widget.
 String getStringFromTextWidget(String string) {
   String? resultString;
-  // Extract text inside double quotes using RegExp match
   RegExp regex = RegExp(r'"([^"]*)"');
   Match? match = regex.firstMatch(string);
 

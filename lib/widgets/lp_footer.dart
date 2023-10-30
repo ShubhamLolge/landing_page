@@ -16,7 +16,8 @@ class _FooterState extends State<Footer> {
       list.add(
         Text(
           getStringFromTextWidget(tab.title.toString()),
-          style: const TextStyle(color: AppColors.white, fontWeight: FontWeight.w500),
+          style: const TextStyle(
+              color: AppColors.white, fontWeight: FontWeight.w500),
         ),
       );
     }
@@ -28,7 +29,8 @@ class _FooterState extends State<Footer> {
     for (var tab in widget.tabItems) {
       list.add(
         Container(
-          decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+          decoration:
+              const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
           height: 36,
           width: 36,
           child: tab.selectedLeadingIcon,
@@ -54,7 +56,8 @@ class _FooterState extends State<Footer> {
               children: [
                 Icon(Icons.snowboarding, size: 50, color: Colors.white),
                 SizedBox(width: 10),
-                SectionLable(title: "WeB", largeScreenFontSize: 35, color: Colors.white),
+                SectionLable(
+                    title: "WeB", largeScreenFontSize: 35, color: Colors.white),
               ],
             ),
           ),
@@ -70,14 +73,22 @@ class _FooterState extends State<Footer> {
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
-              spacing:
-                  platform == 'MacOS' || platform == 'Windows' || platform == 'Linux' || platform == 'Fuchsia' || platform == 'Web Desktop' || platform == 'Web Tablet'
-                      ? 40
-                      : 50,
-              runSpacing:
-                  platform == 'MacOS' || platform == 'Windows' || platform == 'Linux' || platform == 'Fuchsia' || platform == 'Web Desktop' || platform == 'Web Tablet'
-                      ? 40
-                      : 35,
+              spacing: platform == 'MacOS' ||
+                      platform == 'Windows' ||
+                      platform == 'Linux' ||
+                      platform == 'Fuchsia' ||
+                      platform == 'Web Desktop' ||
+                      platform == 'Web Tablet'
+                  ? 40
+                  : 50,
+              runSpacing: platform == 'MacOS' ||
+                      platform == 'Windows' ||
+                      platform == 'Linux' ||
+                      platform == 'Fuchsia' ||
+                      platform == 'Web Desktop' ||
+                      platform == 'Web Tablet'
+                  ? 40
+                  : 35,
               children: getTabTitle(),
             ),
           ),

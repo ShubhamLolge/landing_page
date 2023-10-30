@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * Minor Release.
+
+## 0.0.4
+
+* Minor Release.

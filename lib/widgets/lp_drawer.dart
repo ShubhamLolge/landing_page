@@ -99,7 +99,8 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
     required TabItem item,
   }) {
     for (int index = 0; index < widget.children.length; index++) {
-      if (navItemName == getStringFromTextWidget(widget.children[index].title.toString())) {
+      if (navItemName ==
+          getStringFromTextWidget(widget.children[index].title.toString())) {
         scrollToSection(context.currentContext!);
         /* item.callTIOnTap == true ? () => item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!); */
         _closeDrawer();

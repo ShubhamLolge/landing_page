@@ -22,14 +22,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const String url1 = "https://images.pexels.com/photos/1420702/pexels-photo-1420702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
-const String url2 = "https://images.pexels.com/photos/5952651/pexels-photo-5952651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
-const String url3 = "https://images.pexels.com/photos/273886/pexels-photo-273886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
-const String url4 = "https://images.pexels.com/photos/5583091/pexels-photo-5583091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const String url1 =
+    "https://images.pexels.com/photos/1420702/pexels-photo-1420702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const String url2 =
+    "https://images.pexels.com/photos/5952651/pexels-photo-5952651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const String url3 =
+    "https://images.pexels.com/photos/273886/pexels-photo-273886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const String url4 =
+    "https://images.pexels.com/photos/5583091/pexels-photo-5583091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 
 final List<TabItem> tabItems = [
   TabItem(
-    title: const Text("QR Code", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+    title: const Text("QR Code",
+        style: TextStyle(
+            fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
     tab: TabWidget(
       url: url1,
       child: "QR Code",
@@ -43,7 +49,9 @@ final List<TabItem> tabItems = [
     onTap: () {},
   ),
   TabItem(
-    title: const Text("Thunder", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+    title: const Text("Thunder",
+        style: TextStyle(
+            fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
     tab: TabWidget(
       url: url2,
       child: "Thunder",
@@ -56,14 +64,28 @@ final List<TabItem> tabItems = [
     onTap: () {},
   ),
   TabItem(
-    title: const Text("Sailing", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: TabWidget(url: url3, child: "Sailing", key: GlobalKey(), color: Colors.blue, lead: const Icon(Icons.sailing_rounded, size: 60)),
+    title: const Text("Sailing",
+        style: TextStyle(
+            fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+    tab: TabWidget(
+        url: url3,
+        child: "Sailing",
+        key: GlobalKey(),
+        color: Colors.blue,
+        lead: const Icon(Icons.sailing_rounded, size: 60)),
     selectedLeadingIcon: const Icon(Icons.sailing_rounded),
     onTap: () {},
   ),
   TabItem(
-    title: const Text("Settings", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: TabWidget(url: url4, child: "Settings", key: GlobalKey(), color: Colors.red, lead: const Icon(Icons.handyman_rounded, size: 60)),
+    title: const Text("Settings",
+        style: TextStyle(
+            fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+    tab: TabWidget(
+        url: url4,
+        child: "Settings",
+        key: GlobalKey(),
+        color: Colors.red,
+        lead: const Icon(Icons.handyman_rounded, size: 60)),
     selectedLeadingIcon: const Icon(Icons.handyman_rounded),
     onTap: () {},
   ),

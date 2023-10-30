@@ -35,7 +35,10 @@ class Header extends StatelessWidget {
     List<Widget> list = [];
     for (var item in children) {
       list.add(
-        TabItemUI(item: item, showLeadingIcon: showLeadingIcon, showTrailingIcon: showTrailingIcon),
+        TabItemUI(
+            item: item,
+            showLeadingIcon: showLeadingIcon,
+            showTrailingIcon: showTrailingIcon),
       );
     }
     return list;
@@ -71,13 +74,17 @@ class Header extends StatelessWidget {
                 padding: const EdgeInsets.all(5),
                 height: 50,
                 width: 150,
-                decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(10)),
                 margin: const EdgeInsets.all(5),
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent, elevation: 0),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent, elevation: 0),
                   child: const Text(
                     "Get Started",
-                    style: TextStyle(color: AppColors.white, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        color: AppColors.white, fontWeight: FontWeight.w700),
                   ),
                   onPressed: () {},
                 ),
@@ -115,16 +122,23 @@ class _TabItemUIState extends State<TabItemUI> {
       child: NotificationBadge(
         count: item.badgeCount ?? 0,
         child: InkWell(
-          onTap: item.callTIOnTap == true ? item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!),
+          onTap: item.callTIOnTap == true
+              ? item.onTap
+              : () => scrollToSection(
+                  (item.tab!.key! as GlobalKey).currentContext!),
           splashColor: AppColors.primary,
-          customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          customBorder:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           child: Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
-            height: size.height * 0.09, // 60
-            width: widget.showLeadingIcon == false && widget.showTrailingIcon == false && (item.selectedLeadingIcon == null || item.unSelectedLeadingIcon == null)
+            height: size.height * 0.09,
+            width: widget.showLeadingIcon == false &&
+                    widget.showTrailingIcon == false &&
+                    (item.selectedLeadingIcon == null ||
+                        item.unSelectedLeadingIcon == null)
                 ? size.width * 0.09
-                : size.width * 0.12, // 60
+                : size.width * 0.12,
             decoration: BoxDecoration(
               color: item.color ?? Colors.transparent,
               borderRadius: BorderRadius.circular(50),
@@ -132,24 +146,29 @@ class _TabItemUIState extends State<TabItemUI> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                widget.showLeadingIcon == true ? item.selectedLeadingIcon ?? Container() : Container(),
+                widget.showLeadingIcon == true
+                    ? item.selectedLeadingIcon ?? Container()
+                    : Container(),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Airoll(
-                        tooltip: item.title.runtimeType == Text ? getStringFromTextWidget(item.title.toString()) : "",
+                        tooltip: item.title.runtimeType == Text
+                            ? getStringFromTextWidget(item.title.toString())
+                            : "",
                         isFloating: false,
                         actOnHover: true,
                         children: item.children,
                         title: item.title,
                       ),
-                      /* item.title */
                       item.subTitle ?? Container(),
                     ],
                   ),
                 ),
-                widget.showTrailingIcon == true ? Center(child: item.trailingIcon ?? Container()) : Container(),
+                widget.showTrailingIcon == true
+                    ? Center(child: item.trailingIcon ?? Container())
+                    : Container(),
               ],
             ),
           ),
