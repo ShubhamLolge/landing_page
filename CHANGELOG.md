@@ -13,3 +13,7 @@
 ## 0.0.4
 
 * Minor Release.
+
+## 0.0.5
+
+* Dependency improvement.

@@ -14,4 +14,4 @@ export 'package:floating_tabbar/Models/tab_item.dart';
 export 'package:floating_tabbar/Widgets/nautics.dart';
 export 'package:floating_tabbar/Widgets/virtify.dart';
 export 'package:floating_tabbar/Services/platform_check.dart';
-export 'package:floating_tabbar/widgets/notification_badge.dart';
+export 'package:floating_tabbar/Widgets/notification_badge.dart';

@@ -1,5 +1,7 @@
 # LandingPage
 
+LandingPage is a flutter package for creating landing pages or welcome project for your apps and websites for your projects, generally as the focus of development is more towards the conceptual features development in any feature rich app, landing_page will help you with remaining bit of your project’s success which is the first view of your work, application made using landing_page will give you the responsive user interface may it be your portfolio application or the landing screen for your online brand we’ve got you covered with all possible customisation you will ever need.
+
 Create captivating and responsive landing pages with ease. The LandingPage widget empowers Flutter developers to craft dynamic and engaging introductory screens for their mobile and web applications. Packed with an array of customization options, it's the ultimate canvas for your creativity.
 
 ### 🚀 Key Features:
