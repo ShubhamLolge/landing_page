@@ -17,3 +17,7 @@
 ## 0.0.5
 
 * Dependency improvement.
+
+## 0.0.6
+
+* Code refactor.
