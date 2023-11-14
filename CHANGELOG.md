@@ -21,3 +21,7 @@
 ## 0.0.6
 
 * Code refactor.
+
+## 0.0.7
+
+* Code refactor and dependency update.

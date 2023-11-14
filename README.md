@@ -1,20 +1,10 @@
 # LandingPage
 
-LandingPage is a flutter package for creating landing pages or welcome project for your apps and websites for your projects, generally as the focus of development is more towards the conceptual features development in any feature rich app, landing_page will help you with remaining bit of your project’s success which is the first view of your work, application made using landing_page will give you the responsive user interface may it be your portfolio application or the landing screen for your online brand we’ve got you covered with all possible customisation you will ever need.
+Built on top of [floating_tabbar](https://pub.dev/packages/floating_tabbar), **landing_page** serves at its best for creating landing screens and welcome interface for any of your project may it be landing UI for your next big project or your portfolio application we got you covered, using the phenominal TabItem model class for maintaining the data and using the rich widget library provided with floating_tabbar making it best experience possible for you create landing pages.
 
-Create captivating and responsive landing pages with ease. The LandingPage widget empowers Flutter developers to craft dynamic and engaging introductory screens for their mobile and web applications. Packed with an array of customization options, it's the ultimate canvas for your creativity.
+LandingPage is a flutter package for creating landing pages or welcome UI for your apps and websites, landing_page will help you with the first view of your work, application made using landing_page will give you the responsive user interface, we’ve got you covered with all possible customisation you will ever need.
 
-### 🚀 Key Features:
-
- * Tabs Galore: Seamlessly organize your content into tabs, making navigation a breeze.
- * Dazzling Header: Customize your app's header with ease, or let the default shine.
- * Footer Finesse: Tailor your footer to your liking or stick with the built-in elegance.
- * Drawer Magic: Add a drawer that suits your app's personality, with left and right options.
- * FAB Awesomeness: Elevate user interaction with a Floating Action Button that's just right.
- * Platform Perfect: Adapt effortlessly to Android, iOS, and Web Mobile platforms.
- * Slick Animations: Delight your users with smooth transitions and animations.
-
-Create a powerful first impression and guide users seamlessly through your app. With LandingPage, your landing pages will be unforgettable, leaving users excited to explore what's next turn on the wow factor!"
+Create a powerful first impression and guide users seamlessly through your app with **landing_page**, your landing pages will be unforgettable and yet created in minimum amount of time, leaving users excited to explore what's next turn on the wow factor!"
 
 
 ## Getting started
@@ -28,8 +18,9 @@ import 'package:landing_page/lib.dart';
 ## Usage
 
 ```dart
-void main() => runApp(const MyApp());
+import 'package:landing_page_preview/lib.dart';
 
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -43,7 +34,32 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         useMaterial3: true,
       ),
-      home: LandingPage(children: tabItems),
+      home: const LP(),
+    );
+  }
+}
+```
+```dart
+import 'package:landing_page_preview/lib.dart';
+
+class LP extends StatefulWidget {
+  const LP({super.key});
+
+  @override
+  State<LP> createState() => _LPState();
+}
+
+class _LPState extends State<LP> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+  @override
+  Widget build(BuildContext context) {
+    return LandingPage(
+      scaffoldKey: _key,
+      children: tabItems,
+      header: Header(
+        showLeadingIcon: false,
+        children: getChildren(context: context, key: _key),
+      ),
     );
   }
 }
@@ -51,7 +67,7 @@ class MyApp extends StatelessWidget {
 final List<TabItem> tabItems = [
   TabItem(
     title: const Text("QR Code", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: TabWidget(
+    tab: MyWidget(
       url: url1,
       child: "QR Code",
       key: GlobalKey(),
@@ -63,32 +79,90 @@ final List<TabItem> tabItems = [
     children: menuItems,
     onTap: () {},
   ),
-  TabItem(
-    title: const Text("Thunder", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: TabWidget(
-      url: url2,
-      child: "Thunder",
-      key: GlobalKey(),
-      color: Colors.orange,
-      lead: const Icon(Icons.offline_bolt_rounded, size: 60),
-    ),
-    selectedLeadingIcon: const Icon(Icons.offline_bolt_rounded),
-    badgeCount: 1,
-    onTap: () {},
-  ),
-  TabItem(
-    title: const Text("Sailing", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: TabWidget(url: url3, child: "Sailing", key: GlobalKey(), color: Colors.blue, lead: const Icon(Icons.sailing_rounded, size: 60)),
-    selectedLeadingIcon: const Icon(Icons.sailing_rounded),
-    onTap: () {},
-  ),
-  TabItem(
-    title: const Text("Settings", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
-    tab: TabWidget(url: url4, child: "Settings", key: GlobalKey(), color: Colors.red, lead: const Icon(Icons.handyman_rounded, size: 60)),
-    selectedLeadingIcon: const Icon(Icons.handyman_rounded),
-    onTap: () {},
-  ),
 ];
+
+List<TabItem> getChildren({
+  required BuildContext context,
+  required GlobalKey<ScaffoldState> key,
+}) {
+  final List<TabItem> children = [
+    TabItem(
+      title: const Icon(Icons.menu_rounded),
+      callTIOnTap: true,
+      onTap: () {
+        openLeftDrawer(scaffoldKey: key);
+      },
+    ),
+    TabItem(
+      title: const Text("QR Code", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+      tab: MyWidget(
+        url: url1,
+        child: "QR Code",
+        key: GlobalKey(),
+        color: Colors.cyan,
+        lead: const Icon(Icons.qr_code_rounded, size: 60),
+      ),
+      selectedLeadingIcon: const Icon(Icons.qr_code_rounded),
+      badgeCount: 3,
+      children: menuItems,
+      onTap: () {},
+    ),
+    TabItem(
+      title: const Text("Thunder", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+      tab: MyWidget(
+        url: url2,
+        child: "Thunder",
+        key: GlobalKey(),
+        color: Colors.orange,
+        lead: const Icon(Icons.offline_bolt_rounded, size: 60),
+      ),
+      callTIOnTap: true,
+      selectedLeadingIcon: const Icon(Icons.offline_bolt_rounded),
+      badgeCount: 1,
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MyWidget(
+              url: url2,
+              child: "Thunder",
+              key: GlobalKey(),
+              color: Colors.orange,
+              lead: const Icon(Icons.offline_bolt_rounded, size: 60),
+            ),
+          ),
+        );
+      },
+    ),
+    TabItem(
+      title: const Text("Settings", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+      tab: MyWidget(url: url4, child: "Settings", key: GlobalKey(), color: Colors.red, lead: const Icon(Icons.handyman_rounded, size: 60)),
+      selectedLeadingIcon: const Icon(Icons.handyman_rounded),
+      callTIOnTap: true,
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MyWidget(url: url4, child: "Settings", key: GlobalKey(), color: Colors.red, lead: const Icon(Icons.handyman_rounded, size: 60)),
+          ),
+        );
+      },
+    ),
+    TabItem(
+      title: const Text("Sailing", style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
+      tab: MyWidget(url: url3, child: "Sailing", key: GlobalKey(), color: Colors.blue, lead: const Icon(Icons.sailing_rounded, size: 60)),
+      selectedLeadingIcon: const Icon(Icons.sailing_rounded),
+      callTIOnTap: true,
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MyWidget(url: url3, child: "Sailing", key: GlobalKey(), color: Colors.blue, lead: const Icon(Icons.sailing_rounded, size: 60)),
+          ),
+        );
+      },
+    ),
+  ];
+  return children;
+}
+
 List<TabItem> menuItems = [
   TabItem(title: const Text('Option 1'), onTap: () {}, badgeCount: 2),
   TabItem(title: const Text('Option 2'), onTap: () {}),
@@ -105,17 +179,12 @@ List<TabItem> subItems = [
   TabItem(title: const Text('Nested Option 2'), onTap: () {}),
 ];
 
-const String url1 = "https://images.pexels.com/photos/1420702/pexels-photo-1420702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
-const String url2 = "https://images.pexels.com/photos/5952651/pexels-photo-5952651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
-const String url3 = "https://images.pexels.com/photos/273886/pexels-photo-273886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
-const String url4 = "https://images.pexels.com/photos/5583091/pexels-photo-5583091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
-
-class TabWidget extends StatelessWidget {
+class MyWidget extends StatelessWidget {
   final String child;
   final Widget lead;
   final Color color;
   final String url;
-  const TabWidget({
+  const MyWidget({
     super.key,
     required this.child,
     required this.color,
@@ -153,6 +222,11 @@ class TabWidget extends StatelessWidget {
     );
   }
 }
+
+const String url1 = "https://images.pexels.com/photos/1420702/pexels-photo-1420702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const String url2 = "https://images.pexels.com/photos/5952651/pexels-photo-5952651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const String url3 = "https://images.pexels.com/photos/273886/pexels-photo-273886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const String url4 = "https://images.pexels.com/photos/5583091/pexels-photo-5583091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 ```
 <table>
   <tr>
@@ -173,4 +247,4 @@ class TabWidget extends StatelessWidget {
 </table>
 
 
-Customize your landing page as per your liking...
+Create and Customize your landing page as per your liking with **landing_page**.

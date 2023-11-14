@@ -4,8 +4,7 @@ import 'package:landing_page/lib.dart';
 Widget visibilityToggle(Function? onToggle, bool isHidden) {
   return InkWell(
     onTap: onToggle != null ? () => onToggle() : null,
-    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off,
-        color: AppColors.primary),
+    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off, color: AppColors.primary),
   );
 }
 
@@ -29,8 +28,7 @@ disableFAB({
   required AnimationController animationController,
 }) {
   scrollController.addListener(() {
-    if (scrollController.position.pixels ==
-        scrollController.position.minScrollExtent) {
+    if (scrollController.position.pixels == scrollController.position.minScrollExtent) {
       animationController.reverse();
     }
   });
@@ -67,4 +65,14 @@ String getStringFromTextWidget(String string) {
     resultString = result;
   }
   return resultString!;
+}
+
+/// Open drawer from left
+void openRightDrawer({required GlobalKey<ScaffoldState> scaffoldKey}) {
+  scaffoldKey.currentState!.openEndDrawer();
+}
+
+/// Open drawer from right
+void openLeftDrawer({required GlobalKey<ScaffoldState> scaffoldKey}) {
+  scaffoldKey.currentState!.openDrawer();
 }

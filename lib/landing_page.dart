@@ -2,6 +2,8 @@ library landing_page;
 
 import 'package:landing_page/lib.dart';
 
+// get updates version from landing_page_preview
+
 /// ## LandingPage
 ///
 /// Create captivating and responsive landing pages with ease. The [LandingPage] widget empowers Flutter developers to craft dynamic and engaging introductory screens for their mobile and web applications. Packed with an array of customization options, it's the ultimate canvas for your creativity.
@@ -84,8 +86,7 @@ class LandingPage extends StatefulWidget {
     required this.children,
     this.footer,
     this.header,
-    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded,
-        size: 30, color: AppColors.white),
+    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded, size: 30, color: AppColors.white),
     this.alignment = MainAxisAlignment.center,
     this.drawer,
     this.trailing,
@@ -102,12 +103,9 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController animationController = AnimationController(
-      duration: const Duration(milliseconds: 300), vsync: this);
-  late final Animation<double> animation =
-      CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
+class _LandingPageState extends State<LandingPage> with SingleTickerProviderStateMixin {
+  late final AnimationController animationController = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
+  late final Animation<double> animation = CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   ScrollController scrollController = ScrollController();
 
@@ -121,15 +119,11 @@ class _LandingPageState extends State<LandingPage>
   @override
   void didChangeDependencies() {
     widget.fAB != null
-        ? () {}
-        : detectScroll(
-            animationController: animationController,
-            scrollController: scrollController);
+        ? null // () {}
+        : detectScroll(animationController: animationController, scrollController: scrollController);
     widget.fAB != null
-        ? () {}
-        : disableFAB(
-            animationController: animationController,
-            scrollController: scrollController);
+        ? null // () {}
+        : disableFAB(animationController: animationController, scrollController: scrollController);
     super.didChangeDependencies();
   }
 
@@ -181,8 +175,7 @@ class _LandingPageState extends State<LandingPage>
             scale: animation,
             child: InkWell(
               onTap: () {
-                scrollToSection(
-                    (widget.children[0].tab!.key as GlobalKey).currentContext!);
+                scrollToSection((widget.children[0].tab!.key as GlobalKey).currentContext!);
                 animationController.reverse();
               },
               child: Vitrify(
@@ -202,9 +195,7 @@ class _LandingPageState extends State<LandingPage>
           ),
       body: Stack(
         children: [
-          SingleChildScrollView(
-              controller: scrollController,
-              child: Column(children: getWidgets())),
+          SingleChildScrollView(controller: scrollController, child: Column(children: getWidgets())),
           platform == 'Android' || platform == 'iOS' || platform == 'Web Mobile'
               ? Vitrify(
                   opacity: 0.1,
@@ -215,9 +206,7 @@ class _LandingPageState extends State<LandingPage>
                           ? null
                           : GestureDetector(
                               onTap: () {
-                                widget.openDrawerOnLeft == true
-                                    ? _key.currentState!.openDrawer()
-                                    : _key.currentState!.openEndDrawer();
+                                widget.openDrawerOnLeft == true ? _key.currentState!.openDrawer() : _key.currentState!.openEndDrawer();
                               },
                               child: SizedBox(
                                 height: 40,
@@ -234,8 +223,7 @@ class _LandingPageState extends State<LandingPage>
                               Text(
                                 "WeB",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700, fontSize: 24),
+                                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
                               ),
                             ],
                           ),
@@ -243,9 +231,7 @@ class _LandingPageState extends State<LandingPage>
                           ? null
                           : GestureDetector(
                               onTap: () {
-                                widget.openDrawerOnLeft == true
-                                    ? _key.currentState!.openDrawer()
-                                    : _key.currentState!.openEndDrawer();
+                                widget.openDrawerOnLeft == true ? _key.currentState!.openDrawer() : _key.currentState!.openEndDrawer();
                               },
                               child: SizedBox(
                                 height: 40,
