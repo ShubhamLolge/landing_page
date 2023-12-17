@@ -44,7 +44,7 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
             navItemName: getStringFromTextWidget(tabItems[i].title.toString()),
           ),
           badgeCount: tabItems[i].badgeCount,
-          callTIOnTap: tabItems[i].callTIOnTap,
+          useTIOnTap: tabItems[i].useTIOnTap,
           children: tabItems[i].children,
           color: tabItems[i].color,
           subTitle: tabItems[i].subTitle,
@@ -99,8 +99,7 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
     required TabItem item,
   }) {
     for (int index = 0; index < widget.children.length; index++) {
-      if (navItemName ==
-          getStringFromTextWidget(widget.children[index].title.toString())) {
+      if (navItemName == getStringFromTextWidget(widget.children[index].title.toString())) {
         scrollToSection(context.currentContext!);
         /* item.callTIOnTap == true ? () => item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!); */
         _closeDrawer();

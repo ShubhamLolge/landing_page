@@ -115,7 +115,7 @@ class _TabItemUIState extends State<TabItemUI> {
       child: NotificationBadge(
         count: item.badgeCount ?? 0,
         child: InkWell(
-          onTap: item.callTIOnTap == true ? item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!),
+          onTap: item.useTIOnTap == true ? item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!),
           splashColor: AppColors.primary,
           customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           child: Container(

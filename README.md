@@ -4,7 +4,7 @@ Built on top of [floating_tabbar](https://pub.dev/packages/floating_tabbar), **l
 
 LandingPage is a flutter package for creating landing pages or welcome UI for your apps and websites, landing_page will help you with the first view of your work, application made using landing_page will give you the responsive user interface, we’ve got you covered with all possible customisation you will ever need.
 
-Create a powerful first impression and guide users seamlessly through your app with **landing_page**, your landing pages will be unforgettable and yet created in minimum amount of time, leaving users excited to explore what's next turn on the wow factor!"
+Create a powerful first impression and guide users seamlessly through your app with **landing_page**, your landing pages will be unforgettable and yet created in minimum amount of time, leaving users excited to explore what's next turn on the wow factor!
 
 
 ## Getting started
