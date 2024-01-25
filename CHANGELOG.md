@@ -1,3 +1,7 @@
+## 0.0.11
+
+* Dependency upgrade.
+
 ## 0.0.10
 
 * Minor Release: Example update and code refactoring.
