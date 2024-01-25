@@ -3,7 +3,10 @@ import 'package:landing_page/lib.dart';
 class Footer extends StatefulWidget {
   /// List of [TabItem]
   final List<TabItem> tabItems;
-  const Footer({super.key, required this.tabItems});
+
+  /// Title of the landing page
+  final String title;
+  const Footer({super.key, required this.tabItems, required this.title});
 
   @override
   State<Footer> createState() => _FooterState();
@@ -16,8 +19,7 @@ class _FooterState extends State<Footer> {
       list.add(
         Text(
           getStringFromTextWidget(tab.title.toString()),
-          style: const TextStyle(
-              color: AppColors.white, fontWeight: FontWeight.w500),
+          style: const TextStyle(color: white, fontWeight: FontWeight.w500),
         ),
       );
     }
@@ -29,11 +31,10 @@ class _FooterState extends State<Footer> {
     for (var tab in widget.tabItems) {
       list.add(
         Container(
-          decoration:
-              const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: tab.color ?? Colors.white, shape: BoxShape.circle),
           height: 36,
           width: 36,
-          child: tab.selectedLeadingIcon,
+          child: tab.selectedLeading ?? tab.unSelectedLeading,
         ),
       );
     }
@@ -43,23 +44,17 @@ class _FooterState extends State<Footer> {
   @override
   Widget build(BuildContext context) {
     String platform = PlatformCheck().platformCheck(context: context);
+    Size size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
-      color: AppColors.darkBlack,
+      color: darkBlack,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.snowboarding, size: 50, color: Colors.white),
-                SizedBox(width: 10),
-                SectionLable(
-                    title: "WeB", largeScreenFontSize: 35, color: Colors.white),
-              ],
-            ),
+            width: size.width,
+            child: Center(child: SectionLable(title: widget.title, largeScreenFontSize: 35, color: Colors.white)),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
@@ -73,20 +68,20 @@ class _FooterState extends State<Footer> {
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: platform == 'MacOS' ||
-                      platform == 'Windows' ||
-                      platform == 'Linux' ||
-                      platform == 'Fuchsia' ||
-                      platform == 'Web Desktop' ||
-                      platform == 'Web Tablet'
+              spacing: platform == Platforms.macOS ||
+                      platform == Platforms.windows ||
+                      platform == Platforms.linux ||
+                      platform == Platforms.fuchsia ||
+                      platform == Platforms.webDesktop ||
+                      platform == Platforms.webTablet
                   ? 40
                   : 50,
-              runSpacing: platform == 'MacOS' ||
-                      platform == 'Windows' ||
-                      platform == 'Linux' ||
-                      platform == 'Fuchsia' ||
-                      platform == 'Web Desktop' ||
-                      platform == 'Web Tablet'
+              runSpacing: platform == Platforms.macOS ||
+                      platform == Platforms.windows ||
+                      platform == Platforms.linux ||
+                      platform == Platforms.fuchsia ||
+                      platform == Platforms.webDesktop ||
+                      platform == Platforms.webTablet
                   ? 40
                   : 35,
               children: getTabTitle(),

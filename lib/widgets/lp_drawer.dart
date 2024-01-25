@@ -10,11 +10,15 @@ class SmallScreenDrawer extends StatefulWidget {
   /// List of [TabItem]
   final List<TabItem> children;
 
+  /// Title of the landing page
+  final String title;
+
   const SmallScreenDrawer({
     super.key,
     this.leading,
     this.trailing,
     required this.children,
+    required this.title,
   });
 
   @override
@@ -26,8 +30,8 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
     List<TabItem> list = [];
     list.add(
       TabItem(
-        selectedLeadingIcon: null,
-        unSelectedLeadingIcon: null,
+        selectedLeading: null,
+        unSelectedLeading: null,
         title: Container(),
         onTap: () {},
       ),
@@ -35,8 +39,8 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
     for (var i = 0; i < tabItems.length; i++) {
       list.add(
         TabItem(
-          selectedLeadingIcon: tabItems[i].selectedLeadingIcon,
-          unSelectedLeadingIcon: null,
+          selectedLeading: tabItems[i].selectedLeading,
+          unSelectedLeading: null,
           title: tabItems[i].title,
           onTap: () => _onTapNavItem(
             item: tabItems[i],
@@ -44,12 +48,12 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
             navItemName: getStringFromTextWidget(tabItems[i].title.toString()),
           ),
           badgeCount: tabItems[i].badgeCount,
-          useTIOnTap: tabItems[i].useTIOnTap,
+          tIOnTap: tabItems[i].tIOnTap,
           children: tabItems[i].children,
           color: tabItems[i].color,
           subTitle: tabItems[i].subTitle,
           tab: tabItems[i].tab,
-          trailingIcon: tabItems[i].trailingIcon,
+          trailing: tabItems[i].trailing,
         ),
       );
     }
@@ -71,23 +75,23 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
       header: widget.leading ??
           InkWell(
             onTap: () {},
-            child: const Row(
-              children: [
-                Icon(Icons.snowboarding, size: 50),
-                SizedBox(width: 5),
-                SectionLable(title: "WeB", largeScreenFontSize: 35),
-              ],
-            ),
+            child: SectionLable(title: widget.title, largeScreenFontSize: 35),
           ),
       footer: widget.trailing ??
-          InkWell(
-            onTap: () {},
-            child: const Text(
-              headerSectionAppVersion,
-              style: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
+          Container(
+            padding: const EdgeInsets.all(5),
+            height: 50,
+            width: 150,
+            decoration: BoxDecoration(color: primary, borderRadius: BorderRadius.circular(10)),
+            margin: const EdgeInsets.all(5),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent, elevation: 0),
+              child: const Text(
+                "Get Started",
+                style: TextStyle(color: white, fontWeight: FontWeight.w700),
+                overflow: TextOverflow.ellipsis,
               ),
+              onPressed: () => setState(() => launchInBrowser(landingPageUrl)),
             ),
           ),
     );
@@ -101,7 +105,6 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
     for (int index = 0; index < widget.children.length; index++) {
       if (navItemName == getStringFromTextWidget(widget.children[index].title.toString())) {
         scrollToSection(context.currentContext!);
-        /* item.callTIOnTap == true ? () => item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!); */
         _closeDrawer();
       } else {}
     }

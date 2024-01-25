@@ -4,7 +4,7 @@ import 'package:landing_page/lib.dart';
 Widget visibilityToggle(Function? onToggle, bool isHidden) {
   return InkWell(
     onTap: onToggle != null ? () => onToggle() : null,
-    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off, color: AppColors.primary),
+    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off, color: primary),
   );
 }
 
@@ -23,7 +23,7 @@ Widget visibilityToggle(Function? onToggle, bool isHidden) {
 */
 
 /// To hide the Floating Action Button when scroll control is at the top on the screen.
-disableFAB({
+void disableFAB({
   required ScrollController scrollController,
   required AnimationController animationController,
 }) {
@@ -34,8 +34,8 @@ disableFAB({
   });
 }
 
-/// To show the Floating Action Button when scroll control is in motion.
-detectScroll({
+/// To indicate when [ScrollController] is in motion.
+void detectScroll({
   required ScrollController scrollController,
   required AnimationController animationController,
 }) {
@@ -46,7 +46,7 @@ detectScroll({
   });
 }
 
-/// To scroll to specific widget using its [BuildContext]
+/// To scroll to specific location using its [BuildContext]
 scrollToSection(BuildContext context) {
   Scrollable.ensureVisible(
     context,
@@ -54,25 +54,34 @@ scrollToSection(BuildContext context) {
   );
 }
 
-/// Get String from Text('') widget.
-String getStringFromTextWidget(String string) {
-  String? resultString;
-  RegExp regex = RegExp(r'"([^"]*)"');
-  Match? match = regex.firstMatch(string);
-
-  if (match != null) {
-    String result = match.group(1) ?? '';
-    resultString = result;
-  }
-  return resultString!;
+/// scrolls to extreme top or bottom using [ScrollController]
+void scrollsExtreme({
+  required ScrollController scrollController,
+  bool scrollToTop = false,
+}) {
+  scrollController.animateTo(
+    scrollToTop == true ? scrollController.position.minScrollExtent : scrollController.position.maxScrollExtent,
+    duration: const Duration(milliseconds: 500),
+    curve: Curves.easeInOut,
+  );
 }
 
-/// Open drawer from left
+/// Open drawer from right
 void openRightDrawer({required GlobalKey<ScaffoldState> scaffoldKey}) {
   scaffoldKey.currentState!.openEndDrawer();
 }
 
-/// Open drawer from right
+/// Open drawer from left
 void openLeftDrawer({required GlobalKey<ScaffoldState> scaffoldKey}) {
   scaffoldKey.currentState!.openDrawer();
+}
+
+/// launch Url.
+Future<void> launchInBrowser(Uri url) async {
+  if (!await launchUrl(
+    url,
+    mode: LaunchMode.externalApplication,
+  )) {
+    throw Exception('Could not launch $url');
+  }
 }

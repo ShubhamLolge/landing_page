@@ -1,8 +1,28 @@
-## 0.0.1
+## 0.0.10
 
-* landing_page Initial Open Source Release.
+* Minor Release: Example update and code refactoring.
 
-## 0.0.2
+## 0.0.9
+
+* Dependency upgrade.
+
+## 0.0.8
+
+* Dependency update.
+
+## 0.0.7
+
+* Code refactor and dependency update.
+
+## 0.0.6
+
+* Code refactor.
+
+## 0.0.5
+
+* Dependency improvement.
+
+## 0.0.4
 
 * Minor Release.
 
@@ -10,26 +30,10 @@
 
 * Minor Release.
 
-## 0.0.4
+## 0.0.2
 
 * Minor Release.
 
-## 0.0.5
+## 0.0.1
 
-* Dependency improvement.
-
-## 0.0.6
-
-* Code refactor.
-
-## 0.0.7
-
-* Code refactor and dependency update.
-
-## 0.0.8
-
-* Dependency update.
-
-## 0.0.9
-
-* Dependency upgrade.
+* landing_page Initial Open Source Release.

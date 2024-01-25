@@ -2,44 +2,29 @@ library landing_page;
 
 import 'package:landing_page/lib.dart';
 
-// get updates version from landing_page_preview
-
 /// ## LandingPage
 ///
-/// Create captivating and responsive landing pages with ease. The [LandingPage] widget empowers Flutter developers to craft dynamic and engaging introductory screens for their mobile and web applications. Packed with an array of customization options, it's the ultimate canvas for your creativity.
-///
-/// 🚀 Key Features:
-///
-/// Tabs Galore:
-/// Seamlessly organize your content into tabs, making navigation a breeze.
-///
-/// Dazzling Header:
-/// Customize your app's header with ease, or let the default shine.
-///
-/// Footer Finesse:
-/// Tailor your footer to your liking or stick with the built-in elegance.
-///
-/// Drawer Magic:
-/// Add a drawer that suits your app's personality, with left and right options.
-///
-/// FAB Awesomeness:
-/// Elevate user interaction with a Floating Action Button that's just right.
-///
-/// Platform Perfect:
-/// Adapt effortlessly to Android, iOS, and Web Mobile platforms.
-///
-/// Slick Animations:
-/// Delight your users with smooth transitions and animations.
+/// Built on top of [floating_tabbar](https://pub.dev/packages/floating_tabbar), **landing_page** serves at its best
+/// for creating landing screens and welcome interface for any of your project may it be landing UI for your next big
+/// project or your portfolio application we got you covered,using the phenominal TabItem model class for maintaining
+/// the data and using the rich widget library provided with floating_tabbar making it best experience possible for you
+/// create landing pages.
 ///
 /// Create a powerful first impression and guide users seamlessly through your app.
 /// With [LandingPage], your landing pages will be unforgettable,
 /// leaving users excited to explore what's next turn on the wow factor!"
+///
+/// ### Note
+/// 1. when providing widget separately like header, drawer, footer, the default parameters wont take values from [LandingPage]
+/// widget so provide all needed parameters separately.
+///
+/// 2. Provide GlobalKey() to every widget that is value of [tab] in [TabItem] in the children ([List<TabItem>]) of [LandingPage],
+/// to allow automatic scroling onclick of header tabs of landing page.
+/// Here [LandingPage] is responsive and that will blends well when the widget you provide to [tab] is also responsive.
 
 class LandingPage extends StatefulWidget {
-  /// List of Screens or Pages for your landing page project.
-  /// The 'tab' parameter of [TabItem] which will contain the actual widget which will be seen as your screen or page
-  /// must not return [Scaffold] widget, instead return simple container having full screen dimensions with your desired data,
-  /// this will work well.
+  /// The 'tab' parameter of [TabItem] must not return [Scaffold] widget,
+  /// instead return simple container having full screen dimensions with your desired data, this will work well.
   final List<TabItem> children;
 
   /// A Widget like [AppBar] that will show on top, if null default will be shown
@@ -51,42 +36,52 @@ class LandingPage extends StatefulWidget {
   /// A [Drawer] Widget for the small screen, if null default will be shown
   final Widget? drawer;
 
-  /// [drawerIcon] will be seen in small screen as trailling icon widget.
-  final Widget? drawerIcon;
-
   /// If true, onclick of [drawerIcon] drawer will open on left, and right if false.
   final bool? openDrawerOnLeft;
 
-  /// Specifies if the [drawerIcon] is at leading position or trailing.
+  /// [trailing] will be seen as trailing widget on [Header] when on large screen,
+  /// as well as on small screen as footer in drawer when using default.
+  final Widget? trailing;
+
+  /// [drawerIcon] will be seen in small screen as trailling icon widget.
+  final Widget? drawerIcon;
+
+  /// [drawerIcon] will be seen in small screen as trailling icon widget.
   final bool drawerIconLeading;
 
   /// [leading] will be seen as leading widget on large screen as well as on small screen as header in drawer when using default.
   final Widget? leading;
 
-  /// [trailing] will be seen as trailing widget on large screen as well as on small screen as footer in drawer when using default.
-  final Widget? trailing;
-
-  /// when true will show leading icon for the children, for conditional rendering.
-  final bool showLeadingIconOnHeader;
-
-  /// when true will show trailing icon for the children, for conditional rendering.
-  final bool showTrailingIconOnHeader;
-
-  /// [MainAxisAlignment] for the tabs on the large screen.
+  /// [MainAxisAlignment] for the tabs on the large screen.  If providing separate [Header] widget then specify [alignment] seperately.
   final MainAxisAlignment alignment;
 
-  /// Widget for [FloatingActionButton], if null default will be shown with [scrollToSection] feature.
+  /// Widget for [FloatingActionButton], if null default will be shown, do disable put empty container() as child.
   final Widget? fAB;
 
-  /// [fabIcon] is the child widget for the default [FloatingActionButton] when you want to use the [scrollToSection] but with your widget choice.
+  /// [fabIcon] is the child widget for the default [FloatingActionButton]
   final Widget? fabIcon;
+
+  /// when true will show leading icon for the children
+  final bool showLeadingIconOnHeader;
+
+  /// when true will show trailing icon for the children
+  final bool showTrailingIconOnHeader;
+
+  /// when true will show trailing icon for the children
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  /// Title of the landing page
+  final String title;
+
+  /// Background for whole landing page.
+  final Decoration? background;
 
   const LandingPage({
     super.key,
     required this.children,
     this.footer,
     this.header,
-    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded, size: 30, color: AppColors.white),
+    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded, size: 30, color: white),
     this.alignment = MainAxisAlignment.center,
     this.drawer,
     this.trailing,
@@ -95,18 +90,20 @@ class LandingPage extends StatefulWidget {
     this.openDrawerOnLeft = true,
     this.leading,
     this.fAB,
+    required this.scaffoldKey,
     this.showLeadingIconOnHeader = false,
     this.showTrailingIconOnHeader = false,
+    required this.title,
+    this.background,
   });
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage> with SingleTickerProviderStateMixin {
+class _LandingPageState extends State<LandingPage> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late final AnimationController animationController = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
   late final Animation<double> animation = CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
   ScrollController scrollController = ScrollController();
 
   @override
@@ -118,12 +115,8 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
 
   @override
   void didChangeDependencies() {
-    widget.fAB != null
-        ? null // () {}
-        : detectScroll(animationController: animationController, scrollController: scrollController);
-    widget.fAB != null
-        ? null // () {}
-        : disableFAB(animationController: animationController, scrollController: scrollController);
+    widget.fAB != null ? null : detectScroll(animationController: animationController, scrollController: scrollController);
+    widget.fAB != null ? null : disableFAB(animationController: animationController, scrollController: scrollController);
     super.didChangeDependencies();
   }
 
@@ -137,15 +130,18 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
         ),
       );
     }
-    list.add(widget.footer ?? Footer(tabItems: widget.children));
+
+    list.add(widget.footer ?? Footer(tabItems: widget.children, title: widget.title));
     return list;
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     String platform = PlatformCheck().platformCheck(context: context);
+
     return Scaffold(
-      key: _key,
+      key: widget.scaffoldKey,
       drawer: widget.openDrawerOnLeft == true
           ? widget.drawer ??
               Vitrify(
@@ -154,6 +150,7 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                   children: widget.children,
                   leading: widget.leading,
                   trailing: widget.trailing,
+                  title: widget.title,
                 ),
               )
           : null,
@@ -165,6 +162,7 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                   children: widget.children,
                   leading: widget.leading,
                   trailing: widget.trailing,
+                  title: widget.title,
                 ),
               )
           : null,
@@ -184,9 +182,9 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                 child: Container(
                   height: 50,
                   width: 50,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.transparent,
+                    color: Theme.of(context).primaryColor.withOpacity(0.2),
                   ),
                   child: widget.fabIcon,
                 ),
@@ -195,8 +193,9 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
           ),
       body: Stack(
         children: [
+          Container(decoration: widget.background),
           SingleChildScrollView(controller: scrollController, child: Column(children: getWidgets())),
-          platform == 'Android' || platform == 'iOS' || platform == 'Web Mobile'
+          platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile
               ? Vitrify(
                   opacity: 0.1,
                   child: Container(
@@ -206,7 +205,9 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                           ? null
                           : GestureDetector(
                               onTap: () {
-                                widget.openDrawerOnLeft == true ? _key.currentState!.openDrawer() : _key.currentState!.openEndDrawer();
+                                widget.openDrawerOnLeft == true
+                                    ? openLeftDrawer(scaffoldKey: widget.scaffoldKey)
+                                    : openRightDrawer(scaffoldKey: widget.scaffoldKey);
                               },
                               child: SizedBox(
                                 height: 40,
@@ -215,23 +216,18 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                               ),
                             ),
                       title: widget.leading ??
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(Icons.snowboarding, size: 50),
-                              SizedBox(width: 5),
-                              Text(
-                                "WeB",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
-                              ),
-                            ],
+                          Text(
+                            widget.title,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
                           ),
                       trailing: widget.drawerIconLeading == true
                           ? null
                           : GestureDetector(
                               onTap: () {
-                                widget.openDrawerOnLeft == true ? _key.currentState!.openDrawer() : _key.currentState!.openEndDrawer();
+                                widget.openDrawerOnLeft == true
+                                    ? openLeftDrawer(scaffoldKey: widget.scaffoldKey)
+                                    : openRightDrawer(scaffoldKey: widget.scaffoldKey);
                               },
                               child: SizedBox(
                                 height: 40,
@@ -250,12 +246,16 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                         leading: widget.leading,
                         trailing: widget.trailing,
                         alignment: widget.alignment,
-                        showLeadingIcon: widget.showLeadingIconOnHeader,
-                        showTrailingIcon: widget.showTrailingIconOnHeader,
+                        showLeading: widget.showLeadingIconOnHeader,
+                        showTrailing: widget.showTrailingIconOnHeader,
+                        title: widget.title,
                       ),
                 ),
         ],
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
