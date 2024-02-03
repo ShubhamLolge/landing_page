@@ -27,14 +27,21 @@ class _TabItemUIState extends State<TabItemUI> {
       child: NotificationBadge(
         count: item.badgeCount ?? 0,
         child: InkWell(
-          onTap: item.tIOnTap == true ? item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!),
+          onTap: item.tIOnTap == true
+              ? item.onTap
+              : () => scrollToSection(
+                  (item.tab!.key! as GlobalKey).currentContext!),
           splashColor: primary,
-          customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          customBorder:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           child: Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             height: size.height * 0.09,
-            width: widget.showLeading == false && widget.showTrailing == false && (item.selectedLeading == null || item.unSelectedLeading == null)
+            width: widget.showLeading == false &&
+                    widget.showTrailing == false &&
+                    (item.selectedLeading == null ||
+                        item.unSelectedLeading == null)
                 ? size.width * 0.09
                 : size.width * 0.12,
             decoration: BoxDecoration(
@@ -44,13 +51,17 @@ class _TabItemUIState extends State<TabItemUI> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                widget.showLeading == true ? item.selectedLeading ?? Container() : Container(),
+                widget.showLeading == true
+                    ? item.selectedLeading ?? Container()
+                    : Container(),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Airoll(
-                        tooltip: item.title.runtimeType == Text ? getStringFromTextWidget(item.title.toString()) : "",
+                        tooltip: item.title.runtimeType == Text
+                            ? getStringFromTextWidget(item.title.toString())
+                            : "",
                         isFloating: false,
                         actOnHover: true,
                         children: item.children,
@@ -60,7 +71,9 @@ class _TabItemUIState extends State<TabItemUI> {
                     ],
                   ),
                 ),
-                widget.showTrailing == true ? Center(child: item.trailing ?? Container()) : Container(),
+                widget.showTrailing == true
+                    ? Center(child: item.trailing ?? Container())
+                    : Container(),
               ],
             ),
           ),

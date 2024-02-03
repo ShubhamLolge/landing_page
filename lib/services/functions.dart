@@ -4,7 +4,8 @@ import 'package:landing_page/lib.dart';
 Widget visibilityToggle(Function? onToggle, bool isHidden) {
   return InkWell(
     onTap: onToggle != null ? () => onToggle() : null,
-    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off, color: primary),
+    child: Icon(isHidden ? Icons.visibility : Icons.visibility_off,
+        color: primary),
   );
 }
 
@@ -28,7 +29,8 @@ void disableFAB({
   required AnimationController animationController,
 }) {
   scrollController.addListener(() {
-    if (scrollController.position.pixels == scrollController.position.minScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.minScrollExtent) {
       animationController.reverse();
     }
   });
@@ -60,7 +62,9 @@ void scrollsExtreme({
   bool scrollToTop = false,
 }) {
   scrollController.animateTo(
-    scrollToTop == true ? scrollController.position.minScrollExtent : scrollController.position.maxScrollExtent,
+    scrollToTop == true
+        ? scrollController.position.minScrollExtent
+        : scrollController.position.maxScrollExtent,
     duration: const Duration(milliseconds: 500),
     curve: Curves.easeInOut,
   );

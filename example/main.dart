@@ -39,30 +39,43 @@ class _LandingPageSTState extends State<LandingPageST> {
     Widget about = About(key: GlobalKey(), productsTab: products);
     List<TabItem> tabItems = [
       TabItem(
-        title: const Text("Home", style: TextStyle(fontWeight: FontWeight.bold)),
+        title:
+            const Text("Home", style: TextStyle(fontWeight: FontWeight.bold)),
         tab: Home(key: GlobalKey(), aboutTab: about),
         selectedLeading: const Icon(Icons.home_work_rounded),
         onTap: () {},
       ),
       TabItem(
         tab: about,
-        title: const Text("About", style: TextStyle(fontWeight: FontWeight.bold)),
+        title:
+            const Text("About", style: TextStyle(fontWeight: FontWeight.bold)),
         selectedLeading: const Icon(Icons.my_library_books_rounded),
         children: [
-          TabItem(title: const Text("Landing Page"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-          TabItem(title: const Text("Quick Dev"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-          TabItem(title: const Text("Responsiveness"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
+          TabItem(
+              title: const Text("Landing Page"),
+              onTap: () {},
+              selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
+          TabItem(
+              title: const Text("Quick Dev"),
+              onTap: () {},
+              selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
+          TabItem(
+              title: const Text("Responsiveness"),
+              onTap: () {},
+              selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
         ],
         onTap: () {},
       ),
       TabItem(
         selectedLeading: const Icon(Icons.star_rounded),
-        title: const Text("Our Team", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text("Our Team",
+            style: TextStyle(fontWeight: FontWeight.bold)),
         onTap: () {},
         tab: OurTeam(key: GlobalKey()),
       ),
       TabItem(
-        title: const Text("Products", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text("Products",
+            style: TextStyle(fontWeight: FontWeight.bold)),
         tab: products,
         selectedLeading: const Icon(Icons.workspaces_rounded),
         children: [
@@ -71,11 +84,31 @@ class _LandingPageSTState extends State<LandingPageST> {
             onTap: () {},
             selectedLeading: const Icon(Icons.circle, size: 10),
             children: [
-              TabItem(title: const Text("Header"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("Footer"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("Drawer"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("SectionLabel"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("TabItemUI"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Header"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Footer"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Drawer"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("SectionLabel"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("TabItemUI"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
             ],
           ),
           TabItem(
@@ -83,13 +116,41 @@ class _LandingPageSTState extends State<LandingPageST> {
             onTap: () {},
             selectedLeading: const Icon(Icons.circle, size: 10),
             children: [
-              TabItem(title: const Text("Airoll"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("Niftile"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("Nautics"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("Floater"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("OpsShell"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("Vitrify"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
-              TabItem(title: const Text("TopTabBar"), onTap: () {}, selectedLeading: const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Airoll"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Niftile"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Nautics"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Floater"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("OpsShell"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("Vitrify"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
+              TabItem(
+                  title: const Text("TopTabBar"),
+                  onTap: () {},
+                  selectedLeading:
+                      const Icon(Icons.check_box_rounded, size: 15)),
             ],
           ),
         ],
@@ -118,7 +179,11 @@ class _LandingPageSTState extends State<LandingPageST> {
 }
 
 List<TabItem> menuItems = [
-  TabItem(title: const Text('Option 1'), onTap: () {}, badgeCount: 2, color: Colors.amber),
+  TabItem(
+      title: const Text('Option 1'),
+      onTap: () {},
+      badgeCount: 2,
+      color: Colors.amber),
   TabItem(title: const Text('Option 2'), onTap: () {}),
   TabItem(
     title: const Text('Option 3'),
@@ -130,7 +195,9 @@ List<TabItem> menuItems = [
 
 List<TabItem> subItems = [
   TabItem(title: const Text('Nested Option 1'), onTap: () {}),
-  TabItem(title: const Text('Nested Option 2'), onTap: () => debugPrint("Nested Option 2")),
+  TabItem(
+      title: const Text('Nested Option 2'),
+      onTap: () => debugPrint("Nested Option 2")),
 ];
 
 class Home extends StatefulWidget {
@@ -151,17 +218,31 @@ class _HomeState extends State<Home> {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
-          height:
-              platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.height * 0.11 : size.height * 0.1,
-          width: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.width : size.width * 0.4,
+          height: platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
+              ? size.height * 0.11
+              : size.height * 0.1,
+          width: platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
+              ? size.width
+              : size.width * 0.4,
           child: RichText(
-            textAlign:
-                platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? TextAlign.center : TextAlign.start,
+            textAlign: platform == Platforms.android ||
+                    platform == Platforms.iOS ||
+                    platform == Platforms.webMobile
+                ? TextAlign.center
+                : TextAlign.start,
             text: TextSpan(
               text: "Welcome to ",
               style: TextStyle(
                 color: darkBlack,
-                fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 26 : 36,
+                fontSize: platform == Platforms.android ||
+                        platform == Platforms.iOS ||
+                        platform == Platforms.webMobile
+                    ? 26
+                    : 36,
                 fontWeight: FontWeight.w800,
               ),
               children: <TextSpan>[
@@ -169,7 +250,11 @@ class _HomeState extends State<Home> {
                   text: "LandingPage",
                   style: TextStyle(
                     color: primary,
-                    fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 26 : 36,
+                    fontSize: platform == Platforms.android ||
+                            platform == Platforms.iOS ||
+                            platform == Platforms.webMobile
+                        ? 26
+                        : 36,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
@@ -177,7 +262,11 @@ class _HomeState extends State<Home> {
                   text: "\nFlutter Package",
                   style: TextStyle(
                     color: darkBlack,
-                    fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 26 : 36,
+                    fontSize: platform == Platforms.android ||
+                            platform == Platforms.iOS ||
+                            platform == Platforms.webMobile
+                        ? 26
+                        : 36,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
@@ -188,52 +277,90 @@ class _HomeState extends State<Home> {
         const SizedBox(height: 10),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
-          height:
-              platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.height * 0.2 : size.height * 0.1,
-          width: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.width : size.width * 0.4,
-          padding: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile
+          height: platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
+              ? size.height * 0.2
+              : size.height * 0.1,
+          width: platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
+              ? size.width
+              : size.width * 0.4,
+          padding: platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
               ? const EdgeInsets.all(8.0)
               : EdgeInsets.zero,
           child: Text(
             "landing_page serves at its best for creating landing screens and welcome interface for any of your Flutter project.",
-            textAlign:
-                platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? TextAlign.center : TextAlign.start,
+            textAlign: platform == Platforms.android ||
+                    platform == Platforms.iOS ||
+                    platform == Platforms.webMobile
+                ? TextAlign.center
+                : TextAlign.start,
             style: TextStyle(
-              color: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? darkGrey : primary,
+              color: platform == Platforms.android ||
+                      platform == Platforms.iOS ||
+                      platform == Platforms.webMobile
+                  ? darkGrey
+                  : primary,
               fontWeight: FontWeight.w400,
-              fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 14 : 18,
+              fontSize: platform == Platforms.android ||
+                      platform == Platforms.iOS ||
+                      platform == Platforms.webMobile
+                  ? 14
+                  : 18,
             ),
           ),
         ),
         const SizedBox(height: 10),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
-          height:
-              platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.height * 0.11 : size.height * 0.1,
-          width: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.width : size.width * 0.4,
+          height: platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
+              ? size.height * 0.11
+              : size.height * 0.1,
+          width: platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
+              ? size.width
+              : size.width * 0.4,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () => setState(() => launchInBrowser(landingPageUrl)),
+                onPressed: () =>
+                    setState(() => launchInBrowser(landingPageUrl)),
                 child: Text(
                   "Get Started",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 14 : 16,
+                    fontSize: platform == Platforms.android ||
+                            platform == Platforms.iOS ||
+                            platform == Platforms.webMobile
+                        ? 14
+                        : 16,
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),
               const Flexible(child: SizedBox(width: 32)),
               ElevatedButton.icon(
-                onPressed: () => scrollToSection((widget.aboutTab.key as GlobalKey).currentContext!),
-                icon: Icon(Icons.keyboard_double_arrow_down_rounded, color: Theme.of(context).primaryColor),
+                onPressed: () => scrollToSection(
+                    (widget.aboutTab.key as GlobalKey).currentContext!),
+                icon: Icon(Icons.keyboard_double_arrow_down_rounded,
+                    color: Theme.of(context).primaryColor),
                 label: Text(
                   "Know More",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 14 : 16,
+                    fontSize: platform == Platforms.android ||
+                            platform == Platforms.iOS ||
+                            platform == Platforms.webMobile
+                        ? 14
+                        : 16,
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
@@ -244,7 +371,9 @@ class _HomeState extends State<Home> {
       ],
     );
 
-    return platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile
+    return platform == Platforms.android ||
+            platform == Platforms.iOS ||
+            platform == Platforms.webMobile
         ? SizedBox(
             height: size.height,
             width: size.width,
@@ -252,10 +381,14 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: size.height * 0.5,
                   width: size.width,
-                  child: Vitrify(radius: BorderRadius.circular(10), opacity: 0.1, child: homeData),
+                  child: Vitrify(
+                      radius: BorderRadius.circular(10),
+                      opacity: 0.1,
+                      child: homeData),
                 ),
               ],
             ),
@@ -267,7 +400,8 @@ class _HomeState extends State<Home> {
               height: size.height * 0.5,
               alignment: Alignment.bottomRight,
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: homeData,
               ),
             ),
@@ -291,7 +425,8 @@ class _AboutState extends State<About> {
     Widget aboutData = Column(
       children: [
         const SizedBox(height: 20),
-        const Text("About Us.", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+        const Text("About Us.",
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
         const SizedBox(height: 10),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -299,10 +434,19 @@ class _AboutState extends State<About> {
             "We are LandingPage, A Flutter package built on top of another Flutter package FloatingTabBar. Landing Page is the combination of following widgets...",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20),
+                fontSize: platform == Platforms.android ||
+                        platform == Platforms.iOS ||
+                        platform == Platforms.webMobile
+                    ? 15
+                    : 20),
           ),
         ),
-        SizedBox(height: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 10 : 20),
+        SizedBox(
+            height: platform == Platforms.android ||
+                    platform == Platforms.iOS ||
+                    platform == Platforms.webMobile
+                ? 10
+                : 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -310,30 +454,42 @@ class _AboutState extends State<About> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("LandingPage", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                const Text("LandingPage",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Header", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Header",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Footer", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Footer",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Drawer", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Drawer",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("SectionLabel", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("SectionLabel",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("TabItemUI", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("TabItemUI",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
               ],
             ),
@@ -341,40 +497,56 @@ class _AboutState extends State<About> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("FloatingTabBar", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                const Text("FloatingTabBar",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Airoll", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Airoll",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Niftile", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Niftile",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Nautics", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Nautics",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Floater", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Floater",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("OpsShell", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("OpsShell",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("Vitrify", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("Vitrify",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: () => scrollToSection((widget.productsTab.key as GlobalKey).currentContext!),
-                  child: Text("TopTabBar", style: TextStyle(color: Theme.of(context).primaryColor)),
+                  onPressed: () => scrollToSection(
+                      (widget.productsTab.key as GlobalKey).currentContext!),
+                  child: Text("TopTabBar",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
               ],
             ),
@@ -383,7 +555,9 @@ class _AboutState extends State<About> {
         const SizedBox(height: 10),
       ],
     );
-    return platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile
+    return platform == Platforms.android ||
+            platform == Platforms.iOS ||
+            platform == Platforms.webMobile
         ? SizedBox(
             height: size.height,
             width: size.width,
@@ -391,10 +565,14 @@ class _AboutState extends State<About> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: size.height * 0.74,
                   width: size.width,
-                  child: Vitrify(radius: BorderRadius.circular(10), opacity: 0.1, child: aboutData),
+                  child: Vitrify(
+                      radius: BorderRadius.circular(10),
+                      opacity: 0.1,
+                      child: aboutData),
                 ),
               ],
             ),
@@ -454,26 +632,39 @@ class _OurTeamState extends State<OurTeam> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.width : null,
+            width: platform == Platforms.android ||
+                    platform == Platforms.iOS ||
+                    platform == Platforms.webMobile
+                ? size.width
+                : null,
             margin: const EdgeInsets.symmetric(horizontal: 10),
             child: Vitrify(
               opacity: 0.1,
               radius: BorderRadius.circular(10),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Column(
                   children: [
                     Text(
                       "Our Team",
                       style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 20 : 30,
+                        fontSize: platform == Platforms.android ||
+                                platform == Platforms.iOS ||
+                                platform == Platforms.webMobile
+                            ? 20
+                            : 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       "Packages used in making of LandingPage",
                       style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20,
+                        fontSize: platform == Platforms.android ||
+                                platform == Platforms.iOS ||
+                                platform == Platforms.webMobile
+                            ? 15
+                            : 20,
                       ),
                     ),
                   ],
@@ -482,9 +673,16 @@ class _OurTeamState extends State<OurTeam> {
             ),
           ),
           SizedBox(
-            height:
-                platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.height * 0.6 : size.height * 0.5,
-            width: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.width : size.width * 0.64,
+            height: platform == Platforms.android ||
+                    platform == Platforms.iOS ||
+                    platform == Platforms.webMobile
+                ? size.height * 0.6
+                : size.height * 0.5,
+            width: platform == Platforms.android ||
+                    platform == Platforms.iOS ||
+                    platform == Platforms.webMobile
+                ? size.width
+                : size.width * 0.64,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: otData.length,
@@ -525,13 +723,15 @@ class _ProductsState extends State<Products> {
       url: landingPageUrl,
       icon: const Icon(CupertinoIcons.cube_box, size: 40, color: primary),
       title: "Header",
-      description: "The Header widget is a custom Flutter widget designed to create a flexible and customizable header for an app.",
+      description:
+          "The Header widget is a custom Flutter widget designed to create a flexible and customizable header for an app.",
     ),
     ProductData(
       url: landingPageUrl,
       icon: const Icon(CupertinoIcons.cube_box, size: 40, color: primary),
       title: "Footer",
-      description: "The Footer widget is another custom Flutter widget designed to create a footer for an app.",
+      description:
+          "The Footer widget is another custom Flutter widget designed to create a footer for an app.",
     ),
     ProductData(
       url: landingPageUrl,
@@ -586,7 +786,8 @@ class _ProductsState extends State<Products> {
       url: floatingTabBarUrl,
       icon: const Icon(CupertinoIcons.cube_box, size: 40, color: primary),
       title: "Floater",
-      description: "The Floater class is a simple Flutter widget that creates a floating container with customizable properties.",
+      description:
+          "The Floater class is a simple Flutter widget that creates a floating container with customizable properties.",
     ),
     ProductData(
       url: floatingTabBarUrl,
@@ -627,20 +828,29 @@ class _ProductsState extends State<Products> {
               opacity: 0.1,
               radius: BorderRadius.circular(10),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Column(
                   children: [
                     Text(
                       "Products",
                       style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 20 : 30,
+                        fontSize: platform == Platforms.android ||
+                                platform == Platforms.iOS ||
+                                platform == Platforms.webMobile
+                            ? 20
+                            : 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       "Widgets in Packages landing_page and floating_tabbar",
                       style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20,
+                        fontSize: platform == Platforms.android ||
+                                platform == Platforms.iOS ||
+                                platform == Platforms.webMobile
+                            ? 15
+                            : 20,
                       ),
                     ),
                   ],
@@ -649,8 +859,11 @@ class _ProductsState extends State<Products> {
             ),
           ),
           SizedBox(
-            height:
-                platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.height * 0.6 : size.height * 0.5,
+            height: platform == Platforms.android ||
+                    platform == Platforms.iOS ||
+                    platform == Platforms.webMobile
+                ? size.height * 0.6
+                : size.height * 0.5,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: pData.length,
@@ -676,7 +889,12 @@ class Product extends StatefulWidget {
   final String description;
   final Uri url;
   final Widget icon;
-  const Product({super.key, required this.title, required this.description, required this.url, required this.icon});
+  const Product(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.url,
+      required this.icon});
 
   @override
   State<Product> createState() => _ProductState();
@@ -690,8 +908,16 @@ class _ProductState extends State<Product> {
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-      height: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.height * 0.4 : size.height * 0.3,
-      width: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.width * 0.8 : size.width * 0.2,
+      height: platform == Platforms.android ||
+              platform == Platforms.iOS ||
+              platform == Platforms.webMobile
+          ? size.height * 0.4
+          : size.height * 0.3,
+      width: platform == Platforms.android ||
+              platform == Platforms.iOS ||
+              platform == Platforms.webMobile
+          ? size.width * 0.8
+          : size.width * 0.2,
       child: Floater(
         radius: BorderRadius.circular(30),
         child: Column(
@@ -710,7 +936,11 @@ class _ProductState extends State<Product> {
             Text(
               widget.title,
               style: TextStyle(
-                fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 20 : 30,
+                fontSize: platform == Platforms.android ||
+                        platform == Platforms.iOS ||
+                        platform == Platforms.webMobile
+                    ? 20
+                    : 30,
                 fontWeight: FontWeight.bold,
               ),
               overflow: TextOverflow.ellipsis,
@@ -724,7 +954,11 @@ class _ProductState extends State<Product> {
                 "Read More",
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
-                  fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20,
+                  fontSize: platform == Platforms.android ||
+                          platform == Platforms.iOS ||
+                          platform == Platforms.webMobile
+                      ? 15
+                      : 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -750,15 +984,24 @@ class ProductData {
   });
 }
 
-final Uri floatingTabBarUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#floatingtabbar');
-final Uri topTabBarUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#toptabbar');
-final Uri floaterUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#floater');
-final Uri nauticsUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#nautics');
-final Uri opsShellUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#opsshell');
-final Uri airollUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#airoll');
-final Uri notificationBadgeUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#notificationbadge');
-final Uri vitrifyUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#vitrify');
-final Uri niftileUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#niftile');
+final Uri floatingTabBarUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#floatingtabbar');
+final Uri topTabBarUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#toptabbar');
+final Uri floaterUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#floater');
+final Uri nauticsUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#nautics');
+final Uri opsShellUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#opsshell');
+final Uri airollUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#airoll');
+final Uri notificationBadgeUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#notificationbadge');
+final Uri vitrifyUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#vitrify');
+final Uri niftileUrl =
+    Uri.parse('https://pub.dev/packages/floating_tabbar#niftile');
 final Uri lintsUrl = Uri.parse('https://pub.dev/packages/flutter_lints');
 final Uri dartDocUrl = Uri.parse('https://pub.dev/packages/dartdoc');
 const String backgroundUrl =

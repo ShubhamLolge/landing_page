@@ -84,7 +84,8 @@ class LandingPage extends StatefulWidget {
     required this.children,
     this.footer,
     this.header,
-    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded, size: 30, color: white),
+    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded,
+        size: 30, color: white),
     this.alignment = MainAxisAlignment.center,
     this.drawer,
     this.trailing,
@@ -105,9 +106,12 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  late final AnimationController animationController = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
-  late final Animation<double> animation = CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
+class _LandingPageState extends State<LandingPage>
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  late final AnimationController animationController = AnimationController(
+      duration: const Duration(milliseconds: 300), vsync: this);
+  late final Animation<double> animation =
+      CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
   ScrollController scrollController = ScrollController();
 
   @override
@@ -119,8 +123,16 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
 
   @override
   void didChangeDependencies() {
-    widget.fAB != null ? null : detectScroll(animationController: animationController, scrollController: scrollController);
-    widget.fAB != null ? null : disableFAB(animationController: animationController, scrollController: scrollController);
+    widget.fAB != null
+        ? null
+        : detectScroll(
+            animationController: animationController,
+            scrollController: scrollController);
+    widget.fAB != null
+        ? null
+        : disableFAB(
+            animationController: animationController,
+            scrollController: scrollController);
     super.didChangeDependencies();
   }
 
@@ -135,7 +147,8 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
       );
     }
 
-    list.add(widget.footer ?? Footer(tabItems: widget.children, title: widget.title));
+    list.add(widget.footer ??
+        Footer(tabItems: widget.children, title: widget.title));
     return list;
   }
 
@@ -177,7 +190,8 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
             scale: animation,
             child: InkWell(
               onTap: () {
-                scrollToSection((widget.children[0].tab!.key as GlobalKey).currentContext!);
+                scrollToSection(
+                    (widget.children[0].tab!.key as GlobalKey).currentContext!);
                 animationController.reverse();
               },
               child: Vitrify(
@@ -198,8 +212,12 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
       body: Stack(
         children: [
           Container(decoration: widget.background),
-          SingleChildScrollView(controller: scrollController, child: Column(children: getWidgets())),
-          platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile
+          SingleChildScrollView(
+              controller: scrollController,
+              child: Column(children: getWidgets())),
+          platform == Platforms.android ||
+                  platform == Platforms.iOS ||
+                  platform == Platforms.webMobile
               ? Vitrify(
                   opacity: 0.1,
                   child: Container(
@@ -210,8 +228,10 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                           : GestureDetector(
                               onTap: () {
                                 widget.openDrawerOnLeft == true
-                                    ? openLeftDrawer(scaffoldKey: widget.scaffoldKey)
-                                    : openRightDrawer(scaffoldKey: widget.scaffoldKey);
+                                    ? openLeftDrawer(
+                                        scaffoldKey: widget.scaffoldKey)
+                                    : openRightDrawer(
+                                        scaffoldKey: widget.scaffoldKey);
                               },
                               child: SizedBox(
                                 height: 40,
@@ -223,15 +243,18 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                           Text(
                             widget.title,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 24),
                           ),
                       trailing: widget.drawerIconLeading == true
                           ? null
                           : GestureDetector(
                               onTap: () {
                                 widget.openDrawerOnLeft == true
-                                    ? openLeftDrawer(scaffoldKey: widget.scaffoldKey)
-                                    : openRightDrawer(scaffoldKey: widget.scaffoldKey);
+                                    ? openLeftDrawer(
+                                        scaffoldKey: widget.scaffoldKey)
+                                    : openRightDrawer(
+                                        scaffoldKey: widget.scaffoldKey);
                               },
                               child: SizedBox(
                                 height: 40,
