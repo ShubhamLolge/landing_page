@@ -53,32 +53,30 @@ class _HeaderState extends State<Header> {
     List<Widget> list = [];
     for (var item in widget.children) {
       list.add(
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Flexible(
-                child: Tooltip(
-                  message: item.title.runtimeType == Text ? getStringFromTextWidget(item.title.toString()) : "",
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Niftile(
-                      item: item,
-                      onTap: item.tIOnTap == true ? item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!),
-                      selectedColor: Colors.black,
-                      unSelectedColor: Colors.black,
-                      showLeading: widget.showLeading,
-                      showTrailing: widget.showTrailing,
-                      buttonMode: true,
-                      width: 100,
-                      borderRadius: BorderRadius.circular(60),
-                      isFloating: widget.isFloating,
-                    ),
+        Flexible(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Tooltip(
+                message: item.title.runtimeType == Text ? getStringFromTextWidget(item.title.toString()) : "",
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Niftile(
+                    item: item,
+                    onTap: item.tIOnTap == true ? item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!),
+                    selectedColor: Colors.black,
+                    unSelectedColor: Colors.black,
+                    showLeading: widget.showLeading,
+                    showTrailing: widget.showTrailing,
+                    buttonMode: true,
+                    width: 100,
+                    borderRadius: BorderRadius.circular(60),
+                    isFloating: widget.isFloating,
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }

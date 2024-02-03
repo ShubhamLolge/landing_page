@@ -36,7 +36,7 @@ and [Small Screen Demo](https://www.youtube.com/shorts/HN7d1hVQbpM)
 ## Widget Conventions
 <table>
   <tr>
-    <td valign="top"><img width="974" alt="small_screen_two-e" src="https://github.com/ShubhamLolge/landing_page/assets/75387392/cae89852-1633-415f-8c5a-ccbada314695"></td>
+    <td valign="top"><img width="80%" alt="small_screen_two-e" src="https://github.com/ShubhamLolge/landing_page/assets/75387392/cae89852-1633-415f-8c5a-ccbada314695"></td>
     <td valign="top"><img width="994" alt="small_screen_one-e" src="https://github.com/ShubhamLolge/landing_page/assets/75387392/14000c5f-946f-47d9-b2cf-7c5856391e1e"></td>
   </tr>
 </table>

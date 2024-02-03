@@ -1,3 +1,7 @@
+## 0.0.12
+
+* Solved issue with header and Dependency upgrade.
+
 ## 0.0.11
 
 * Dependency upgrade.

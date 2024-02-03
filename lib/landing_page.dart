@@ -76,6 +76,9 @@ class LandingPage extends StatefulWidget {
   /// Background for whole landing page.
   final Decoration? background;
 
+  /// Header tabs are floating or not.
+  final bool isFloating;
+
   const LandingPage({
     super.key,
     required this.children,
@@ -95,6 +98,7 @@ class LandingPage extends StatefulWidget {
     this.showTrailingIconOnHeader = false,
     required this.title,
     this.background,
+    this.isFloating = false,
   });
 
   @override
@@ -242,6 +246,7 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                   opacity: 0.1,
                   child: widget.header ??
                       Header(
+                        isFloating: widget.isFloating,
                         children: widget.children,
                         leading: widget.leading,
                         trailing: widget.trailing,
