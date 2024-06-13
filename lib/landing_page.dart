@@ -82,6 +82,11 @@ class LandingPage extends StatefulWidget {
   /// Header tabs are floating or not.
   final bool isFloating;
 
+  /// The color to use for the scrim that obscures primary content while a drawer is open.
+  ///
+  /// If this is null, then [DrawerThemeData.scrimColor] is used. If that is also null, then it defaults to [Colors.black54].
+  final Color? drawerScrimColor;
+
   const LandingPage({
     super.key,
     required this.children,
@@ -103,6 +108,7 @@ class LandingPage extends StatefulWidget {
     this.background,
     this.isFloating = false,
     this.smallScreenHeader,
+    this.drawerScrimColor,
   });
 
   @override
@@ -168,7 +174,7 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                 title: widget.title,
               )
           : null,
-      drawerScrimColor: Colors.transparent,
+      drawerScrimColor: widget.drawerScrimColor ?? Colors.transparent,
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: widget.fAB ??
           ScaleTransition(

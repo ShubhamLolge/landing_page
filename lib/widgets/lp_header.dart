@@ -58,12 +58,17 @@ class _HeaderState extends State<Header> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Tooltip(
-                message: item.title.runtimeType == Text ? getStringFromTextWidget(item.title.toString()) : "",
+                message: item.title.runtimeType == Text
+                    ? getStringFromTextWidget(item.title.toString())
+                    : "",
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 5),
                   child: Niftile(
                     item: item,
-                    onTap: item.tIOnTap == true ? item.onTap : () => scrollToSection((item.tab!.key! as GlobalKey).currentContext!),
+                    onTap: item.tIOnTap == true
+                        ? item.onTap
+                        : () => scrollToSection(
+                            (item.tab!.key! as GlobalKey).currentContext!),
                     selectedColor: Colors.black,
                     unSelectedColor: Colors.black,
                     showLeading: widget.showLeading,
@@ -95,7 +100,8 @@ class _HeaderState extends State<Header> {
             widget.leading ??
                 Container(
                   margin: const EdgeInsets.all(5),
-                  child: SectionLabel(title: widget.title, largeScreenFontSize: 35),
+                  child: SectionLabel(
+                      title: widget.title, largeScreenFontSize: 35),
                 ),
             Expanded(
               child: Row(
@@ -108,16 +114,20 @@ class _HeaderState extends State<Header> {
                   padding: const EdgeInsets.all(5),
                   height: 50,
                   width: 150,
-                  decoration: BoxDecoration(color: primary, borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+                      color: primary, borderRadius: BorderRadius.circular(10)),
                   margin: const EdgeInsets.all(5),
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent, elevation: 0),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent, elevation: 0),
                     child: const Text(
                       "Get Started",
-                      style: TextStyle(color: white, fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(color: white, fontWeight: FontWeight.w700),
                       overflow: TextOverflow.ellipsis,
                     ),
-                    onPressed: () => setState(() => launchInBrowser(landingPageUrl)),
+                    onPressed: () =>
+                        setState(() => launchInBrowser(landingPageUrl)),
                   ),
                 ),
           ],

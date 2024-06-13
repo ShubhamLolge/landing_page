@@ -19,11 +19,18 @@ class SectionLabel extends StatelessWidget {
 
     return Text(
       title,
-      textAlign: platform == "Android" || platform == "iOS" || platform == "Web Mobile" ? TextAlign.center : TextAlign.start,
+      textAlign:
+          platform == "Android" || platform == "iOS" || platform == "Web Mobile"
+              ? TextAlign.center
+              : TextAlign.start,
       style: TextStyle(
         color: color ?? darkBlack,
         fontWeight: FontWeight.w800,
-        fontSize: platform == "Android" || platform == "iOS" || platform == "Web Mobile" ? (smallScreenFontSize ?? 24) : (largeScreenFontSize ?? 52),
+        fontSize: platform == "Android" ||
+                platform == "iOS" ||
+                platform == "Web Mobile"
+            ? (smallScreenFontSize ?? 24)
+            : (largeScreenFontSize ?? 52),
       ),
     );
   }

@@ -1,6 +1,6 @@
 name: landing_page
 description: Create stunning and responsive Flutter landing pages with the versatile LandingPage widget.
-version: 0.0.13
+version: 0.0.14
 homepage: https://github.com/ShubhamLolge/landing_page
 
 environment:
