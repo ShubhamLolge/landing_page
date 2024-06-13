@@ -30,6 +30,9 @@ class LandingPage extends StatefulWidget {
   /// A Widget like [AppBar] that will show on top, if null default will be shown
   final Widget? header;
 
+  /// A Widget like [AppBar] that will show on top in small screen platforms, if null default will be shown
+  final Widget? smallScreenHeader;
+
   /// A Widget like Footer that will show on bottom, if null default will be shown
   final Widget? footer;
 
@@ -84,8 +87,7 @@ class LandingPage extends StatefulWidget {
     required this.children,
     this.footer,
     this.header,
-    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded,
-        size: 30, color: white),
+    this.fabIcon = const Icon(Icons.keyboard_double_arrow_up_rounded, size: 30, color: white),
     this.alignment = MainAxisAlignment.center,
     this.drawer,
     this.trailing,
@@ -100,18 +102,16 @@ class LandingPage extends StatefulWidget {
     required this.title,
     this.background,
     this.isFloating = false,
+    this.smallScreenHeader,
   });
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage>
-    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  late final AnimationController animationController = AnimationController(
-      duration: const Duration(milliseconds: 300), vsync: this);
-  late final Animation<double> animation =
-      CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
+class _LandingPageState extends State<LandingPage> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  late final AnimationController animationController = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
+  late final Animation<double> animation = CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
   ScrollController scrollController = ScrollController();
 
   @override
@@ -123,16 +123,8 @@ class _LandingPageState extends State<LandingPage>
 
   @override
   void didChangeDependencies() {
-    widget.fAB != null
-        ? null
-        : detectScroll(
-            animationController: animationController,
-            scrollController: scrollController);
-    widget.fAB != null
-        ? null
-        : disableFAB(
-            animationController: animationController,
-            scrollController: scrollController);
+    widget.fAB != null ? null : detectScroll(animationController: animationController, scrollController: scrollController);
+    widget.fAB != null ? null : disableFAB(animationController: animationController, scrollController: scrollController);
     super.didChangeDependencies();
   }
 
@@ -147,8 +139,7 @@ class _LandingPageState extends State<LandingPage>
       );
     }
 
-    list.add(widget.footer ??
-        Footer(tabItems: widget.children, title: widget.title));
+    list.add(widget.footer ?? Footer(tabItems: widget.children, title: widget.title));
     return list;
   }
 
@@ -161,26 +152,20 @@ class _LandingPageState extends State<LandingPage>
       key: widget.scaffoldKey,
       drawer: widget.openDrawerOnLeft == true
           ? widget.drawer ??
-              Vitrify(
-                opacity: 0.1,
-                child: SmallScreenDrawer(
-                  children: widget.children,
-                  leading: widget.leading,
-                  trailing: widget.trailing,
-                  title: widget.title,
-                ),
+              SmallScreenDrawer(
+                children: widget.children,
+                leading: widget.leading,
+                trailing: widget.trailing,
+                title: widget.title,
               )
           : null,
       endDrawer: widget.openDrawerOnLeft == false
           ? widget.drawer ??
-              Vitrify(
-                opacity: 0.1,
-                child: SmallScreenDrawer(
-                  children: widget.children,
-                  leading: widget.leading,
-                  trailing: widget.trailing,
-                  title: widget.title,
-                ),
+              SmallScreenDrawer(
+                children: widget.children,
+                leading: widget.leading,
+                trailing: widget.trailing,
+                title: widget.title,
               )
           : null,
       drawerScrimColor: Colors.transparent,
@@ -190,37 +175,27 @@ class _LandingPageState extends State<LandingPage>
             scale: animation,
             child: InkWell(
               onTap: () {
-                scrollToSection(
-                    (widget.children[0].tab!.key as GlobalKey).currentContext!);
+                scrollToSection((widget.children[0].tab!.key as GlobalKey).currentContext!);
                 animationController.reverse();
               },
-              child: Vitrify(
-                opacity: 0.1,
-                radius: BorderRadius.circular(100),
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).primaryColor.withOpacity(0.2),
-                  ),
-                  child: widget.fabIcon,
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).primaryColor.withOpacity(0.2),
                 ),
+                child: widget.fabIcon,
               ),
             ),
           ),
       body: Stack(
         children: [
           Container(decoration: widget.background),
-          SingleChildScrollView(
-              controller: scrollController,
-              child: Column(children: getWidgets())),
-          platform == Platforms.android ||
-                  platform == Platforms.iOS ||
-                  platform == Platforms.webMobile
-              ? Vitrify(
-                  opacity: 0.1,
-                  child: Container(
+          SingleChildScrollView(controller: scrollController, child: Column(children: getWidgets())),
+          platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile
+              ? widget.smallScreenHeader ??
+                  Container(
                     margin: const EdgeInsets.all(5),
                     child: ListTile(
                       leading: widget.drawerIconLeading == false
@@ -228,57 +203,40 @@ class _LandingPageState extends State<LandingPage>
                           : GestureDetector(
                               onTap: () {
                                 widget.openDrawerOnLeft == true
-                                    ? openLeftDrawer(
-                                        scaffoldKey: widget.scaffoldKey)
-                                    : openRightDrawer(
-                                        scaffoldKey: widget.scaffoldKey);
+                                    ? openLeftDrawer(scaffoldKey: widget.scaffoldKey)
+                                    : openRightDrawer(scaffoldKey: widget.scaffoldKey);
                               },
-                              child: SizedBox(
-                                height: 40,
-                                width: 40,
-                                child: widget.drawerIcon,
-                              ),
+                              child: widget.drawerIcon,
                             ),
                       title: widget.leading ??
                           Text(
                             widget.title,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 24),
+                            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
                           ),
                       trailing: widget.drawerIconLeading == true
                           ? null
                           : GestureDetector(
                               onTap: () {
                                 widget.openDrawerOnLeft == true
-                                    ? openLeftDrawer(
-                                        scaffoldKey: widget.scaffoldKey)
-                                    : openRightDrawer(
-                                        scaffoldKey: widget.scaffoldKey);
+                                    ? openLeftDrawer(scaffoldKey: widget.scaffoldKey)
+                                    : openRightDrawer(scaffoldKey: widget.scaffoldKey);
                               },
-                              child: SizedBox(
-                                height: 40,
-                                width: 40,
-                                child: widget.drawerIcon,
-                              ),
+                              child: widget.drawerIcon,
                             ),
                     ),
+                  )
+              : widget.header ??
+                  Header(
+                    isFloating: widget.isFloating,
+                    children: widget.children,
+                    leading: widget.leading,
+                    trailing: widget.trailing,
+                    alignment: widget.alignment,
+                    showLeading: widget.showLeadingIconOnHeader,
+                    showTrailing: widget.showTrailingIconOnHeader,
+                    title: widget.title,
                   ),
-                )
-              : Vitrify(
-                  opacity: 0.1,
-                  child: widget.header ??
-                      Header(
-                        isFloating: widget.isFloating,
-                        children: widget.children,
-                        leading: widget.leading,
-                        trailing: widget.trailing,
-                        alignment: widget.alignment,
-                        showLeading: widget.showLeadingIconOnHeader,
-                        showTrailing: widget.showTrailingIconOnHeader,
-                        title: widget.title,
-                      ),
-                ),
         ],
       ),
     );

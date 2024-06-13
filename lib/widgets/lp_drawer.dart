@@ -75,19 +75,17 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
       header: widget.leading ??
           InkWell(
             onTap: () {},
-            child: SectionLable(title: widget.title, largeScreenFontSize: 35),
+            child: SectionLabel(title: widget.title, largeScreenFontSize: 35),
           ),
       footer: widget.trailing ??
           Container(
             padding: const EdgeInsets.all(5),
             height: 50,
             width: 150,
-            decoration: BoxDecoration(
-                color: primary, borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(color: primary, borderRadius: BorderRadius.circular(10)),
             margin: const EdgeInsets.all(5),
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent, elevation: 0),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent, elevation: 0),
               child: const Text(
                 "Get Started",
                 style: TextStyle(color: white, fontWeight: FontWeight.w700),
@@ -105,8 +103,7 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
     required TabItem item,
   }) {
     for (int index = 0; index < widget.children.length; index++) {
-      if (navItemName ==
-          getStringFromTextWidget(widget.children[index].title.toString())) {
+      if (navItemName == getStringFromTextWidget(widget.children[index].title.toString())) {
         scrollToSection(context.currentContext!);
         _closeDrawer();
       } else {}

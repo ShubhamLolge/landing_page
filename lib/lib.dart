@@ -5,7 +5,7 @@ export './widgets/lp_header.dart';
 export './widgets/lp_drawer.dart';
 export './widgets/lp_footer.dart';
 export './widgets/tabitem_ui.dart';
-export './widgets/section_lable.dart';
+export 'widgets/section_label.dart';
 export 'dart:math';
 export 'package:flutter/material.dart';
 export 'package:flutter/rendering.dart';

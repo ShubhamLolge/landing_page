@@ -31,8 +31,7 @@ class _FooterState extends State<Footer> {
     for (var tab in widget.tabItems) {
       list.add(
         Container(
-          decoration: BoxDecoration(
-              color: tab.color ?? Colors.white, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: tab.color ?? Colors.white, shape: BoxShape.circle),
           height: 36,
           width: 36,
           child: tab.selectedLeading ?? tab.unSelectedLeading,
@@ -55,11 +54,7 @@ class _FooterState extends State<Footer> {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
             width: size.width,
-            child: Center(
-                child: SectionLable(
-                    title: widget.title,
-                    largeScreenFontSize: 35,
-                    color: Colors.white)),
+            child: Center(child: SectionLabel(title: widget.title, largeScreenFontSize: 35, color: Colors.white)),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
