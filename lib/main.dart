@@ -1,5 +1,13 @@
-import 'package:landing_page_preview/lib.dart';
+// ignore_for_file: unused_import
+
+// import 'package:landing_page_preview/SmokeTest/induction.dart';
+// import 'package:landing_page_preview/lib.dart';
+// import 'package:landing_page_preview/SmokeTest/landing_page_st.dart';
+
+import 'package:flutter/material.dart';
+// import 'package:landing_page_preview/SmokeTest/induction.dart';
 import 'package:landing_page_preview/SmokeTest/landing_page_st.dart';
+import 'package:landing_page_preview/services/constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,12 +39,15 @@ class MyApp extends StatelessWidget {
 /*
 Todo
 
+  OnboardingScreens widget with name "Induction" which would have 
+
 refer this: https://wtflex.in
 
 Find a way to manipulate the parameters without creating a object of a class.
   (ex: provide data to the Airoll which is not directly accessible but takes data from Header, 
   but want to customise the airoll without providing extra data to the Header 
   and also not adding all extra parameters to Header to take that data)
+
 
 LandingPage
 1.  Add "fix footer" logic here as well as in the code block where it will show fix footer.

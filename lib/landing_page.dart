@@ -28,6 +28,9 @@ class LandingPage extends StatefulWidget {
   /// A Widget like [AppBar] that will show on top, if null default will be shown
   final Widget? header;
 
+  /// A Widget like [AppBar] that will show on top in small screen platforms, if null default will be shown
+  final Widget? smallScreenHeader;
+
   /// A Widget like Footer that will show on bottom, if null default will be shown
   final Widget? footer;
 
@@ -82,6 +85,11 @@ class LandingPage extends StatefulWidget {
   /// Header tabs are floating or not.
   final bool isFloating;
 
+  /// The color to use for the scrim that obscures primary content while a drawer is open.
+  ///
+  /// If this is null, then [DrawerThemeData.scrimColor] is used. If that is also null, then it defaults to [Colors.black54].
+  final Color? drawerScrimColor;
+
   const LandingPage({
     Key? key,
     required this.children,
@@ -102,6 +110,8 @@ class LandingPage extends StatefulWidget {
     required this.title,
     this.background,
     this.isFloating = false,
+    this.smallScreenHeader,
+    this.drawerScrimColor,
   }) : super(key: key);
 
   @override
@@ -151,29 +161,23 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
       key: widget.scaffoldKey,
       drawer: widget.openDrawerOnLeft == true
           ? widget.drawer ??
-              Vitrify(
-                opacity: 0.1,
-                child: SmallScreenDrawer(
-                  children: widget.children,
-                  leading: widget.leading,
-                  trailing: widget.trailing,
-                  title: widget.title,
-                ),
+              SmallScreenDrawer(
+                children: widget.children,
+                leading: widget.leading,
+                trailing: widget.trailing,
+                title: widget.title,
               )
           : null,
       endDrawer: widget.openDrawerOnLeft == false
           ? widget.drawer ??
-              Vitrify(
-                opacity: 0.1,
-                child: SmallScreenDrawer(
-                  children: widget.children,
-                  leading: widget.leading,
-                  trailing: widget.trailing,
-                  title: widget.title,
-                ),
+              SmallScreenDrawer(
+                children: widget.children,
+                leading: widget.leading,
+                trailing: widget.trailing,
+                title: widget.title,
               )
           : null,
-      drawerScrimColor: Colors.transparent,
+      // drawerScrimColor: widget.drawerScrimColor ?? Colors.transparent,
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: widget.fAB ??
           ScaleTransition(
@@ -183,18 +187,14 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                 scrollToSection((widget.children[0].tab!.key as GlobalKey).currentContext!);
                 animationController.reverse();
               },
-              child: Vitrify(
-                opacity: 0.1,
-                radius: BorderRadius.circular(100),
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).primaryColor.withOpacity(0.2),
-                  ),
-                  child: widget.fabIcon,
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).primaryColor.withOpacity(0.6),
                 ),
+                child: widget.fabIcon,
               ),
             ),
           ),
@@ -203,9 +203,8 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
           Container(decoration: widget.background),
           SingleChildScrollView(controller: scrollController, child: Column(children: getWidgets())),
           platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile
-              ? Vitrify(
-                  opacity: 0.1,
-                  child: Container(
+              ? widget.smallScreenHeader ??
+                  Container(
                     margin: const EdgeInsets.all(5),
                     child: ListTile(
                       leading: widget.drawerIconLeading == false
@@ -217,12 +216,12 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                                     : openRightDrawer(scaffoldKey: widget.scaffoldKey);
                               },
                               /*
-                              child: SizedBox(
-                                height: 40,
-                                width: 40,
-                                child: widget.drawerIcon,
-                              ),
-                              */
+                          child: SizedBox(
+                            height: 40,
+                            width: 40,
+                            child: widget.drawerIcon,
+                          ),
+                          */
                               child: widget.drawerIcon,
                             ),
                       title: widget.leading ??
@@ -240,31 +239,27 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
                                     : openRightDrawer(scaffoldKey: widget.scaffoldKey);
                               },
                               /*
-                              child: SizedBox(
-                                height: 40,
-                                width: 40,
-                                child: widget.drawerIcon,
-                              ),
-                              */
+                          child: SizedBox(
+                            height: 40,
+                            width: 40,
+                            child: widget.drawerIcon,
+                          ),
+                          */
                               child: widget.drawerIcon,
                             ),
                     ),
+                  )
+              : widget.header ??
+                  Header(
+                    isFloating: widget.isFloating,
+                    children: widget.children,
+                    leading: widget.leading,
+                    trailing: widget.trailing,
+                    alignment: widget.alignment,
+                    showLeading: widget.showLeadingIconOnHeader,
+                    showTrailing: widget.showTrailingIconOnHeader,
+                    title: widget.title,
                   ),
-                )
-              : Vitrify(
-                  opacity: 0.1,
-                  child: widget.header ??
-                      Header(
-                        isFloating: widget.isFloating,
-                        children: widget.children,
-                        leading: widget.leading,
-                        trailing: widget.trailing,
-                        alignment: widget.alignment,
-                        showLeading: widget.showLeadingIconOnHeader,
-                        showTrailing: widget.showTrailingIconOnHeader,
-                        title: widget.title,
-                      ),
-                ),
         ],
       ),
     );

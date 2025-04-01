@@ -15,14 +15,12 @@ class _LandingPageSTState extends State<LandingPageST> {
     Widget about = About(key: GlobalKey(), productsTab: products);
     List<TabItem> tabItems = [
       TabItem(
-        color: Colors.amber,
         title: const Text("Home", style: TextStyle(fontWeight: FontWeight.bold)),
         tab: Home(key: GlobalKey(), aboutTab: about),
         selectedLeading: const Icon(Icons.home_work_rounded),
         onTap: () {},
       ),
       TabItem(
-        color: Colors.red,
         tab: about,
         title: const Text("About", style: TextStyle(fontWeight: FontWeight.bold)),
         selectedLeading: const Icon(Icons.my_library_books_rounded),
@@ -34,14 +32,12 @@ class _LandingPageSTState extends State<LandingPageST> {
         onTap: () {},
       ),
       TabItem(
-        color: Colors.green,
         selectedLeading: const Icon(Icons.star_rounded),
         title: const Text("Our Team", style: TextStyle(fontWeight: FontWeight.bold)),
         onTap: () {},
         tab: OurTeam(key: GlobalKey()),
       ),
       TabItem(
-        color: Colors.yellow,
         title: const Text("Products", style: TextStyle(fontWeight: FontWeight.bold)),
         tab: products,
         selectedLeading: const Icon(Icons.workspaces_rounded),
@@ -84,7 +80,13 @@ class _LandingPageSTState extends State<LandingPageST> {
     Size size = MediaQuery.of(context).size;
     String platform = PlatformCheck().platformCheck(context: context);
     return LandingPage(
-      alignment: MainAxisAlignment.start,
+      drawerScrimColor: Colors.white,
+      // smallScreenHeader: Container(
+      //   height: size.height * 0.075,
+      //   width: size.width,
+      //   child: AppBar(title: Text("data")),
+      // ),
+      alignment: MainAxisAlignment.end,
       background: const BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(backgroundUrl),
@@ -236,7 +238,7 @@ class _HomeState extends State<Home> {
                   margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: size.height * 0.5,
                   width: size.width,
-                  child: Vitrify(radius: BorderRadius.circular(10), opacity: 0.1, child: homeData),
+                  child: homeData,
                 ),
               ],
             ),
@@ -375,7 +377,7 @@ class _AboutState extends State<About> {
                   margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: size.height * 0.74,
                   width: size.width,
-                  child: Vitrify(radius: BorderRadius.circular(10), opacity: 0.1, child: aboutData),
+                  child: aboutData,
                 ),
               ],
             ),
@@ -437,28 +439,24 @@ class _OurTeamState extends State<OurTeam> {
           Container(
             width: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? size.width : null,
             margin: const EdgeInsets.symmetric(horizontal: 10),
-            child: Vitrify(
-              opacity: 0.1,
-              radius: BorderRadius.circular(10),
-              child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                child: Column(
-                  children: [
-                    Text(
-                      "Our Team",
-                      style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 20 : 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: Column(
+                children: [
+                  Text(
+                    "Our Team",
+                    style: TextStyle(
+                      fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 20 : 30,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      "Packages used in making of LandingPage",
-                      style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20,
-                      ),
+                  ),
+                  Text(
+                    "Packages used in making of LandingPage",
+                    style: TextStyle(
+                      fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -604,28 +602,24 @@ class _ProductsState extends State<Products> {
         children: [
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10),
-            child: Vitrify(
-              opacity: 0.1,
-              radius: BorderRadius.circular(10),
-              child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                child: Column(
-                  children: [
-                    Text(
-                      "Products",
-                      style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 20 : 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: Column(
+                children: [
+                  Text(
+                    "Products",
+                    style: TextStyle(
+                      fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 20 : 30,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      "Widgets in Packages landing_page and floating_tabbar",
-                      style: TextStyle(
-                        fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20,
-                      ),
+                  ),
+                  Text(
+                    "Widgets in Packages landing_page and floating_tabbar",
+                    style: TextStyle(
+                      fontSize: platform == Platforms.android || platform == Platforms.iOS || platform == Platforms.webMobile ? 15 : 20,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -743,4 +737,4 @@ final Uri niftileUrl = Uri.parse('https://pub.dev/packages/floating_tabbar#nifti
 final Uri lintsUrl = Uri.parse('https://pub.dev/packages/flutter_lints');
 final Uri dartDocUrl = Uri.parse('https://pub.dev/packages/dartdoc');
 const String backgroundUrl =
-    "https://media3.giphy.com/media/10cXff6xep02Na/giphy.gif?cid=ecf05e47gcaitolrju2yrqlljt7fcvs5qgsgn2at04ue5kdu&ep=v1_gifs_search&rid=giphy.gif&ct=g";
+    "https://plus.unsplash.com/premium_photo-1673306778968-5aab577a7365?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";

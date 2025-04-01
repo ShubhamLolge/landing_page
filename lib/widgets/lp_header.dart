@@ -95,7 +95,7 @@ class _HeaderState extends State<Header> {
             widget.leading ??
                 Container(
                   margin: const EdgeInsets.all(5),
-                  child: SectionLable(title: widget.title, largeScreenFontSize: 35),
+                  child: SectionLabel(title: widget.title, largeScreenFontSize: 35),
                 ),
             Expanded(
               child: Row(

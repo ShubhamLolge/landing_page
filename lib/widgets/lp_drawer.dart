@@ -75,7 +75,7 @@ class _SmallScreenDrawerState extends State<SmallScreenDrawer> {
       header: widget.leading ??
           InkWell(
             onTap: () {},
-            child: SectionLable(title: widget.title, largeScreenFontSize: 35),
+            child: SectionLabel(title: widget.title, largeScreenFontSize: 35),
           ),
       footer: widget.trailing ??
           Container(

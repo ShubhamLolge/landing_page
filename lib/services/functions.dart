@@ -47,9 +47,9 @@ void detectScroll({
 }
 
 /// To scroll to specific location using its [BuildContext]
-scrollToSection(BuildContext context) {
+scrollToSection(BuildContext? context) {
   Scrollable.ensureVisible(
-    context,
+    context!,
     duration: kDuration,
   );
 }

@@ -54,7 +54,7 @@ class _FooterState extends State<Footer> {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
             width: size.width,
-            child: Center(child: SectionLable(title: widget.title, largeScreenFontSize: 35, color: Colors.white)),
+            child: Center(child: SectionLabel(title: widget.title, largeScreenFontSize: 35, color: Colors.white)),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),

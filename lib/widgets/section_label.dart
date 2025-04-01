@@ -1,11 +1,11 @@
 import 'package:landing_page_preview/lib.dart';
 
-class SectionLable extends StatelessWidget {
+class SectionLabel extends StatelessWidget {
   final String title;
   final double? smallScreenFontSize;
   final double? largeScreenFontSize;
   final Color? color;
-  const SectionLable({
+  const SectionLabel({
     super.key,
     required this.title,
     this.largeScreenFontSize,
