@@ -4,7 +4,7 @@ class Header extends StatefulWidget {
   /// List of [TabItem]
   final List<TabItem> children;
 
-  /// Title of the landing page
+  /// Title of the landing page.
   final String title;
 
   /// Height of [Header]
